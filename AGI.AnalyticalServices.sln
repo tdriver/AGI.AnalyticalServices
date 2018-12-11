@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGI.AnalyticalServices", "AGI.AnalyticalServices\AGI.AnalyticalServices.csproj", "{6AA91A7D-1907-4C6B-B02F-3A4BE9F65E5E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGI.AnalyticalServices.Tests", "AGI.AnalyticalServices.Tests\AGI.AnalyticalServices.Tests.csproj", "{B5D05FE2-C453-450C-9AF0-5CEAFDEB384A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AA91A7D-1907-4C6B-B02F-3A4BE9F65E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AA91A7D-1907-4C6B-B02F-3A4BE9F65E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AA91A7D-1907-4C6B-B02F-3A4BE9F65E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AA91A7D-1907-4C6B-B02F-3A4BE9F65E5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D05FE2-C453-450C-9AF0-5CEAFDEB384A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D05FE2-C453-450C-9AF0-5CEAFDEB384A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D05FE2-C453-450C-9AF0-5CEAFDEB384A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D05FE2-C453-450C-9AF0-5CEAFDEB384A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FC452F2-1D7E-4385-A561-AC4E293C6483}
+	EndGlobalSection
+EndGlobal
