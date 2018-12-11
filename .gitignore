@@ -331,3 +331,4 @@ ASALocalRun/
 
 # Ignore the config file that stores API Keys
 /AGI.AnalyticalServices/AGI.AnalyticalServices.config
+/AGI.AnalyticalServices.Tests/AGI.AnalyticalServices.config

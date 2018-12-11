@@ -15,4 +15,10 @@
     <ProjectReference Include="..\AGI.AnalyticalServices\AGI.AnalyticalServices.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="AGI.AnalyticalServices.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
