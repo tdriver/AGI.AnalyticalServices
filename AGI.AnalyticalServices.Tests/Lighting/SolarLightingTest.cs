@@ -4,7 +4,7 @@ using AGI.AnalyticalServices.Inputs.Lighting;
 using AGI.AnalyticalServices.Outputs.Lighting;
 using NUnit.Framework;
 
-namespace AGI.AnalyticalServices.Tests.SDK.Lighting
+namespace AGI.AnalyticalServices.Tests.Lighting
 {
     [TestFixture]
     public class SolarLightingTest
@@ -14,7 +14,10 @@ namespace AGI.AnalyticalServices.Tests.SDK.Lighting
         [OneTimeSetUp]
         public void Init()
         {
-            ApiKey = ConfigurationManager.AppSettings.Get("ApiKey");
+            var efm = new ExeConfigurationFileMap {ExeConfigFilename = "AGI.AnalyticalServices.config"};
+            var configuration = ConfigurationManager.OpenMappedExeConfiguration(efm, ConfigurationUserLevel.None);
+            AppSettingsSection asc = (AppSettingsSection)configuration.GetSection("appSettings");
+            ApiKey = asc.Settings["ApiKey"].Value;
         }
 
         [Test]
@@ -29,8 +32,7 @@ namespace AGI.AnalyticalServices.Tests.SDK.Lighting
             request.AnalysisStop = new DateTime(2018,5,5);
             var uri = new Uri("https://saas.agi.com/v1/lighting/site?u=" + ApiKey);
 
-            // TODO, implement the networking interface for these calls.
-            SolarLightingResponse lightingResult = null; //Networking.HttpPostCall<SolarLightingRequest,SolarLightingResponse>(uri, request).Result;
+            var lightingResult = Networking.HttpPostCall<SolarLightingRequest,SolarLightingResponse>(uri, request).Result;
             Assert.That(lightingResult != null);
             Assert.That(lightingResult.Lighting.Count == 1);
             Assert.That(lightingResult.Lighting[0].Sunrise.Hour == 5);

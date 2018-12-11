@@ -7,7 +7,7 @@ using AGI.AnalyticalServices.Inputs.Routing;
 using AGI.AnalyticalServices.Outputs.Terrain;
 using NUnit.Framework;
 
-namespace AGI.AnalyticalServices.Tests.SDK.Terrain
+namespace AGI.AnalyticalServices.Tests.Terrain
 {
     [TestFixture]
     public class TerrainTests
@@ -17,7 +17,10 @@ namespace AGI.AnalyticalServices.Tests.SDK.Terrain
         [OneTimeSetUp]
         public void Init()
         {
-            ApiKey = ConfigurationManager.AppSettings.Get("ApiKey");
+            var efm = new ExeConfigurationFileMap {ExeConfigFilename = "AGI.AnalyticalServices.config"};
+            var configuration = ConfigurationManager.OpenMappedExeConfiguration(efm, ConfigurationUserLevel.None);
+            AppSettingsSection asc = (AppSettingsSection)configuration.GetSection("appSettings");
+            ApiKey = asc.Settings["ApiKey"].Value;
         }
 
         [Test]
@@ -45,8 +48,7 @@ namespace AGI.AnalyticalServices.Tests.SDK.Terrain
 
             var uri = new Uri("https://saas.agi.com/v1/terrain/pointtopoint?u=" + ApiKey);
 
-            // TODO, implement the networking intgerface for these calls.
-            List<TerrainHeightAtLocation> terrainHeightResult = null; //Networking.HttpPostCall<PointToPointRoute,List<TerrainHeightAtLocation>>(uri, request).Result;
+            var terrainHeightResult =  Networking.HttpPostCall<PointToPointRoute,List<TerrainHeightAtLocation>>(uri, request).Result;
             Assert.That(terrainHeightResult != null);
             Assert.That(terrainHeightResult.Count > 0);
             var sb = new StringBuilder();
