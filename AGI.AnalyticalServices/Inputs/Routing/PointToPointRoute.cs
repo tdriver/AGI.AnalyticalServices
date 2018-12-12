@@ -1,13 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using AGI.AnalyticalServices.Exceptions;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AGI.AnalyticalServices.Inputs.Routing
 {
-    public class PointToPointRoute
+    public class PointToPointRoute:IVerifiable
     {
         /// <summary>
-        /// The Waypoints that the route follows
+        /// The Waypoints defining the route
         /// </summary>
-        public ServiceCartographicWithTime[] Waypoints { get; set; }
+        public List<ServiceCartographicWithTime> Waypoints { get; set; }
         /// <summary>
         /// After route propagation, the points in the <see cref="Waypoints"/> array may not necessarily
         /// be aligned with the propagated route, and may be excluded.  Set this value to true if you would
@@ -21,16 +23,16 @@ namespace AGI.AnalyticalServices.Inputs.Routing
         public OutputSettings OutputSettings { get; set; }
 
         /// <summary>
-        /// Initializes the Waypoints array with <paramref name="numberOfPointsToAdd"/> default
-        /// <see cref="ServiceCartographicWithTime"/> objects.  Also sets Output settings to the default.
+        /// Initializes Waypoints list with <paramref name="numberOfPointsToAdd"/> default
+        /// <see cref="ServiceCartographicWithTime"/> objects.  Also sets other defaults.
         /// </summary>
         /// <param name="numberOfPointsToAdd"></param>
         public PointToPointRoute(int numberOfPointsToAdd)
         {
-            Waypoints = new ServiceCartographicWithTime[numberOfPointsToAdd];
+            Waypoints = new List<ServiceCartographicWithTime>();
             for (int i = 0; i < numberOfPointsToAdd; i++)
             {
-                Waypoints[i] = new ServiceCartographicWithTime();
+                Waypoints.Add(new ServiceCartographicWithTime());
             }
             IncludeWaypointsInRoute = false;
             OutputSettings = new OutputSettings();
@@ -51,8 +53,26 @@ namespace AGI.AnalyticalServices.Inputs.Routing
 
         public PointToPointRoute()
         {
+            Waypoints = new List<ServiceCartographicWithTime>();
             IncludeWaypointsInRoute = false;
             OutputSettings = new OutputSettings();
+        }
+
+        public void Verify()
+        {
+            OutputSettings.Verify();
+
+            if (Waypoints == null)
+            {
+                throw new AnalyticalServicesException(24000, "Waypoints must be supplied to this service.");
+            }
+
+            if (Waypoints.Count < 2)
+            {
+                throw new AnalyticalServicesException(23600, "There must be at least two waypoints to define a route.");
+            }
+
+            Waypoints.ForEach(n => n.Verify());
         }
     }
 }

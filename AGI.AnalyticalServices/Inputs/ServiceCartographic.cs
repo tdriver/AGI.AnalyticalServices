@@ -1,41 +1,48 @@
-﻿using System.Text;
+﻿using AGI.AnalyticalServices.Exceptions;
 
 namespace AGI.AnalyticalServices.Inputs
 {
-    public class ServiceCartographic
+    public class ServiceCartographic : IVerifiable
     {
+        public ServiceCartographic()
+        {
+
+        }
+        public ServiceCartographic(double latitude, double longitude, double altitude)
+        {
+            Latitude = latitude;
+            Longitude = longitude;
+            Altitude = altitude;
+        }
+
         /// <summary>
-        /// The Latitude of the location, in degrees.
+        /// Latitude measured negative south, in degrees
         /// </summary>
         public double Latitude { get; set; }
         /// <summary>
-        /// The Longitude of the location, in degrees. Longitudes are measured negative west of the Prime Meridian.
+        /// Longitude measured negative west, in degrees.
         /// </summary>
         public double Longitude { get; set; }
         /// <summary>
-        ///  The Altitude of the location, in meters.
+        /// Altitude in meters
         /// </summary>
         public double Altitude { get; set; }
 
         /// <summary>
-        /// Outputs the ServiceCartographic location as: "Lat: x.xx, Lon: x.xx, Alt: x.xx", with full precision.
+        /// Verifies cartographic coordinates
         /// </summary>
-        /// <returns>String representation of the ServiceCartographic.</returns>
-        public override string ToString()
+        /// <exception cref="AnalyticalServicesException">When Longitude or Latitude values are outside their domain, in degrees.</exception>
+        public void Verify()
         {
-            var sb = new StringBuilder();
-            sb.Append($"Lat: {Latitude}, Lon: {Longitude}, Alt: {Altitude}");
-            return sb.ToString();
-        }
+            if (Latitude < -90 || Latitude > 90)
+            {
+                throw new AnalyticalServicesException(23600, "Latitude must be between -90 deg and 90 deg.");
+            }
 
-        /// <summary>
-        /// Sets the ServiceCartographic defaults to 0,0,0.
-        /// </summary>
-        public ServiceCartographic()
-        {
-            Latitude = 0.0;
-            Longitude = 0.0;
-            Altitude = 0.0;
+            if (Longitude < -360 || Longitude > 360)
+            {
+                throw new AnalyticalServicesException(23600, "Longitude must be between -360 deg and 360 deg.");
+            }
         }
     }
 }
