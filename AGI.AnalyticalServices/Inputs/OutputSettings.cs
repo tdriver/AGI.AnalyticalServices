@@ -44,10 +44,7 @@ namespace AGI.AnalyticalServices.Inputs
             }
         }
 
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        public override string ToString() => JsonConvert.SerializeObject(this);
     }
 
     public class CoordinateType
