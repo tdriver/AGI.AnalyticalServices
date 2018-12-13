@@ -3,7 +3,7 @@
     /// <summary>
     /// A static location on the Earth.
     /// </summary>
-    public class Site
+    public class Site: IVerifiable
     {
         /// <summary>
         /// the location of the Site.
@@ -27,6 +27,12 @@
             Location = new ServiceCartographic();
             MeanSeaLevel = false;
             OutputSettings = new OutputSettings();
+        }
+
+        public void Verify()
+        {
+            Location.Verify();
+            OutputSettings.Verify();
         }
     }
 }
