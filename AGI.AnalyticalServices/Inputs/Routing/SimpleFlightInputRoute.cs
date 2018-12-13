@@ -3,7 +3,8 @@
 namespace AGI.AnalyticalServices.Inputs.Routing
 {
     /// <summary>
-    /// Simple flight routes are defined by a few waypoints, with the vehicle making smooth turns around each waypoint, all at a constant altitude.
+    /// Simple flight routes are defined by a few waypoints, with the vehicle making smooth turns around
+    /// each waypoint, all at a constant altitude.
     /// </summary>
     public class SimpleFlightRoute
     {

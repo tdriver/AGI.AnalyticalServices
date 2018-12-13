@@ -10,7 +10,8 @@
         /// </summary>
         public ServiceCartographic Location { get; set; }
         /// <summary>
-        /// When true, the Altitude you've specified in Location is referenced to Mean Sea Level.  when false, the Altitude is reference to WGS-84.
+        /// When true, the Altitude you've specified in Location is referenced to Mean Sea Level.
+        /// When false, the Altitude is reference to WGS-84.
         /// </summary>
         public bool MeanSeaLevel { get; set; }
         /// <summary>

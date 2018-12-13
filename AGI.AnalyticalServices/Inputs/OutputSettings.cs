@@ -27,9 +27,11 @@ namespace AGI.AnalyticalServices.Inputs
         /// <summary>
         /// Verifies the OutputSettings.
         /// </summary>
-        /// <exception cref="AnalyticalServicesException">Thrown when <see cref="CoordinateFormat.Frame"/> is <see cref="FrameRepresentation.Inertial"/> and
-        /// <see cref="CoordinateFormat.Coord"/> is <see cref="CoordinateRepresentation.LLA"/>.  LLA Coordinates cannot be represented 
-        /// in the inertial reference frame. This exception is also thrown if <see cref="Step"/> is less than or equal to zero.</exception>
+        /// <exception cref="AnalyticalServicesException">Thrown when <see cref="CoordinateFormat.Frame"/> is 
+        /// <see cref="FrameRepresentation.Inertial"/> and <see cref="CoordinateFormat.Coord"/> is
+        /// <see cref="CoordinateRepresentation.LLA"/>.  LLA Coordinates cannot be represented 
+        /// in the inertial reference frame. This exception is also thrown if <see cref="Step"/>
+        /// is less than or equal to zero.</exception>
         public void Verify()
         {
             if (Step <= 0)
@@ -40,7 +42,8 @@ namespace AGI.AnalyticalServices.Inputs
             if (CoordinateFormat.Frame == FrameRepresentation.Inertial &&
                 CoordinateFormat.Coord == CoordinateRepresentation.LLA)
             {
-                throw new AnalyticalServicesException(25200, "Cartographic coordinates cannot be returned in an inertial frame.");
+                throw new AnalyticalServicesException(25200, 
+                    "Cartographic coordinates cannot be returned in an inertial frame.");
             }
         }
 
@@ -57,7 +60,8 @@ namespace AGI.AnalyticalServices.Inputs
         /// </summary>
         public CoordinateRepresentation Coord { get; set; }
         /// <summary>
-        /// The reference frame for the <see cref="CoordinateRepresentation.XYZ"/> coordinates.  Defaults to <see cref="CoordinateRepresentation.LLA"/>.
+        /// The reference frame for the <see cref="CoordinateRepresentation.XYZ"/> coordinates.  
+        ///Defaults to <see cref="CoordinateRepresentation.LLA"/>.
         /// </summary>
         public FrameRepresentation Frame { get; set; }
 

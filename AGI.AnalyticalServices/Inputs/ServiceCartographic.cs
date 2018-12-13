@@ -31,7 +31,8 @@ namespace AGI.AnalyticalServices.Inputs
         /// <summary>
         /// Verifies cartographic coordinates
         /// </summary>
-        /// <exception cref="AnalyticalServicesException">When Longitude or Latitude values are outside their domain, in degrees.</exception>
+        /// <exception cref="AnalyticalServicesException">When Longitude or Latitude values are outside 
+        /// their domain, in degrees.</exception>
         public void Verify()
         {
             if (Latitude < -90 || Latitude > 90)
