@@ -1,4 +1,4 @@
-﻿namespace AGI.AnalyticalServices.Inputs
+﻿namespace AGI.AnalyticalServices.Inputs.Routing
 {
     /// <summary>
     /// A static location on the Earth.

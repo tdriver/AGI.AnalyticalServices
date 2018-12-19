@@ -17,7 +17,8 @@ namespace AGI.AnalyticalServices.Inputs
             Time = time;
         }
 
-        public ServiceCartographicWithTime(double latitude, double longitude, double altitude, List<SensorState> sensors, DateTimeOffset time)
+        public ServiceCartographicWithTime(double latitude, double longitude, double altitude, 
+                                           List<SensorState> sensors, DateTimeOffset time)
         {
             Position = new ServiceCartographic(latitude, longitude, altitude);
             if (sensors == null)
