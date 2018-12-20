@@ -8,19 +8,8 @@ using NUnit.Framework;
 namespace AGI.AnalyticalServices.Tests.Lighting
 {
     [TestFixture]
-    public class SolarLightingTest
+    public class SolarLightingTest:TestBase
     {
-        public string ApiKey { get; set; }
-
-        [OneTimeSetUp]
-        public void Init()
-        {
-            var efm = new ExeConfigurationFileMap {ExeConfigFilename = "AGI.AnalyticalServices.config"};
-            var configuration = ConfigurationManager.OpenMappedExeConfiguration(efm, ConfigurationUserLevel.None);
-            AppSettingsSection asc = (AppSettingsSection)configuration.GetSection("appSettings");
-            ApiKey = asc.Settings["ApiKey"].Value;
-        }
-
         [Test]
         public void TestSolarLighting()
         {
@@ -31,7 +20,8 @@ namespace AGI.AnalyticalServices.Tests.Lighting
             request.Path.Location.Altitude = 1910;
             request.AnalysisStart = new DateTime(2018,5,5);
             request.AnalysisStop = new DateTime(2018,5,5);
-            var uri = new Uri("https://saas.agi.com/v1/lighting/site?u=" + ApiKey);
+
+            var uri = GetFullUri("/V1/lighting/site");
 
             var lightingResult = 
             Networking.HttpPostCall<SolarLighting<Site>,SolarLightingResponse>(uri, request).Result;

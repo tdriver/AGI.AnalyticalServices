@@ -9,16 +9,9 @@ namespace AGI.AnalyticalServices.Outputs.Terrain
     /// </summary>
     public class TerrainHeightAtLocation
     {
-        public Location Location { get; set; }
+        public ServiceCartographicWithTime Location { get; set; }
         public float TerrainHeightFromWgs84 { get; set; }
         public float MeanSeaLevelHeightFromWgs84 { get; set; }
         public float TerrainHeightFromMeanSeaLevel { get; set; }
-    }
-
-    public class Location
-    {
-        public ServiceCartographic Position { get; set; }
-        public object[] SensorStates { get; set; }
-        public DateTime Time { get; set; }
     }
 }

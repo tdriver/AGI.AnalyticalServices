@@ -10,19 +10,8 @@ using NUnit.Framework;
 namespace AGI.AnalyticalServices.Tests.Terrain
 {
     [TestFixture]
-    public class TerrainTests
-    {
-        public string ApiKey { get; set; }
-
-        [OneTimeSetUp]
-        public void Init()
-        {
-            var efm = new ExeConfigurationFileMap {ExeConfigFilename = "AGI.AnalyticalServices.config"};
-            var configuration = ConfigurationManager.OpenMappedExeConfiguration(efm, ConfigurationUserLevel.None);
-            AppSettingsSection asc = (AppSettingsSection)configuration.GetSection("appSettings");
-            ApiKey = asc.Settings["ApiKey"].Value;
-        }
-
+    public class TerrainTests: TestBase
+    {       
         [Test]
         public void TestTerrainAlongPointToPointRoute()
         {
@@ -43,19 +32,16 @@ namespace AGI.AnalyticalServices.Tests.Terrain
                 Longitude = -105.217755
             };
             request.Waypoints[1].Time = new DateTime(2018,10,30,1,0,0);
-            request.OutputSettings.Step = 20;
-            
+            request.OutputSettings.Step = 20;            
 
-            var uri = new Uri("https://saas.agi.com/v1/terrain/pointtopoint?u=" + ApiKey);
+            var uri = GetFullUri("/V1/terrain/pointtopoint");
 
-            var terrainHeightResult =  Networking.HttpPostCall<PointToPointRoute,List<TerrainHeightAtLocation>>(uri, request).Result;
+            var terrainHeightResult =  
+            Networking.HttpPostCall<PointToPointRoute,List<TerrainHeightAtLocation>>(uri, request).Result;
+
             Assert.That(terrainHeightResult != null);
-            Assert.That(terrainHeightResult.Count > 0);
-            var sb = new StringBuilder();
-            foreach (var r in terrainHeightResult)
-            {
-                sb.AppendLine(r.Location.Position.Longitude + "," + r.TerrainHeightFromMeanSeaLevel);
-            }
+            Assert.That(terrainHeightResult.Count == 181);
+            Assert.AreEqual(2091.64136f,terrainHeightResult[0].TerrainHeightFromMeanSeaLevel);
         }
     }
 }
