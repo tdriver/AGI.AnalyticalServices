@@ -3,7 +3,7 @@ using AGI.AnalyticalServices.Exceptions;
 using AGI.AnalyticalServices.Inputs;
 using Newtonsoft.Json;
 
-namespace AgiServiceLibrary.Core.Models
+namespace AGI.AnalyticalServices.Inputs.Routing
 {
     /// <summary>
     /// A route defined by the ephemeris associated with a STK Data Federate (SDF) catalog object. 

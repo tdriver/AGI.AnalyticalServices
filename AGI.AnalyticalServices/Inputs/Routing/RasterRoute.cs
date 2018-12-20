@@ -3,7 +3,7 @@ using AGI.AnalyticalServices.Exceptions;
 using AGI.AnalyticalServices.Inputs;
 using Newtonsoft.Json;
 
-namespace AgiServiceLibrary.Core.Models
+namespace AGI.AnalyticalServices.Inputs.Routing
 {
     /// <summary>
     /// A raster search grid route.

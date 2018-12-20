@@ -4,12 +4,12 @@ using AGI.AnalyticalServices.Exceptions;
 using AGI.AnalyticalServices.Inputs;
 using Newtonsoft.Json;
 
-namespace AgiServiceLibrary.Core.Models
+namespace AGI.AnalyticalServices.Inputs.Routing
 {
     /// <summary>
     /// An orbit route based on a Two Line Element (TLE) set.
     /// </summary>
-    public class Sgp4RouteData : IVerifiable
+    public class Sgp4Route : IVerifiable
     {
         /// <summary>
         /// The start time for the vehicle following the orbital path.
@@ -29,7 +29,7 @@ namespace AgiServiceLibrary.Core.Models
         public List<string> TLEs { get; set; }
         public OutputSettings OutputSettings { get; set; }
 
-        public Sgp4RouteData()
+        public Sgp4Route()
         {
             OutputSettings = new OutputSettings();
         }
