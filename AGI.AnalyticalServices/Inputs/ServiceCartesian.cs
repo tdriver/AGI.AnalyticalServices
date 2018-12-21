@@ -3,6 +3,9 @@ using System.Text;
 
 namespace AGI.AnalyticalServices.Inputs
 {
+    /// <summary>
+    /// Represents a three-dimensional position, with cartesian coordinates.
+    /// </summary>
     public class ServiceCartesian
     {
         public ServiceCartesian()
@@ -28,10 +31,7 @@ namespace AGI.AnalyticalServices.Inputs
         /// </summary>
         public double Z { get; set; }
 
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        public override string ToString() => JsonConvert.SerializeObject(this);
     }
 }
 

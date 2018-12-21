@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace AGI.AnalyticalServices.Util
 {
+    /// <summary>
+    /// Utilities to help create the service call.
+    /// </summary>
     public static class Networking
     {
         private static HttpClient _client;
