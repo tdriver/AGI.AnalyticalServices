@@ -14,11 +14,11 @@ namespace AGI.AnalyticalServices.Inputs.Routing
         /// <summary>
         /// The start date and time for the route.
         /// </summary>
-        public DateTime Start {get; set;}
+        public DateTimeOffset Start {get; set;}
         /// <summary>
         /// The stop date and time for the route.
         /// </summary>
-        public DateTime Stop { get; set; }
+        public DateTimeOffset Stop { get; set; }
         /// <summary>
         /// A URI that points to the json object definition on the STK Data Federate (SDF). 
         /// See <see href="https://saas.agi.com/V1/Documentation/Routing#SDFURIs">Finding SDF Object URIs</see>

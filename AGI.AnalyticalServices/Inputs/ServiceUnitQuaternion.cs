@@ -47,9 +47,6 @@ namespace AGI.AnalyticalServices.Inputs
         /// </summary>
         public double Z { get; set; }
 
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        public override string ToString() => JsonConvert.SerializeObject(this);
     }
 }

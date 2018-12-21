@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -9,9 +10,16 @@ using Newtonsoft.Json;
 
 namespace AGI.AnalyticalServices.Util
 {
-    public class Networking
+    public static class Networking
     {
         private static HttpClient _client;
+        public static string ApiKey { get; set; }
+        public static Uri BaseUri { get; set; }
+
+        static Networking()
+        {
+            Init();
+        }
 
         /// A method that posts <T> Json data to a Uri and returns <R> result or throws with http error code.
         /// <summary>
@@ -43,5 +51,30 @@ namespace AGI.AnalyticalServices.Util
             return result;
 
         }
+
+         public static void Init()
+        {
+            try
+            {
+                var efm = new ExeConfigurationFileMap { ExeConfigFilename = "AGI.AnalyticalServices.config" };
+                var configuration = ConfigurationManager.OpenMappedExeConfiguration(efm, ConfigurationUserLevel.None);
+                AppSettingsSection asc = (AppSettingsSection)configuration.GetSection("appSettings");
+                ApiKey = asc.Settings["ApiKey"].Value;
+                if (string.IsNullOrEmpty(ApiKey))
+                {
+                    throw new ArgumentNullException("The ApiKey is not defined in the configuration file.");
+                }
+                var url = asc.Settings["BaseUrl"].Value;
+                if (string.IsNullOrEmpty(url))
+                {
+                    throw new ArgumentNullException("The BaseUrl is not defined in the configuration file.");
+                }
+                BaseUri = new Uri(url);
+            }catch(Exception e){
+                throw new ConfigurationErrorsException("There is an error with the configuration file: " + e.Message);
+            }
+        }
+
+        public static Uri GetFullUri(string relativeUri) => new Uri(BaseUri, relativeUri + "?u=" + ApiKey);
     }
 }

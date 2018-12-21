@@ -9,7 +9,7 @@ using AGI.AnalyticalServices.Util;
 namespace AGI.AnalyticalServices.Tests.Lighting
 {
     [TestFixture]
-    public class SolarLightingTest:TestBase
+    public class SolarLightingTest
     {
         [Test]
         public void TestSolarLighting()
@@ -22,7 +22,7 @@ namespace AGI.AnalyticalServices.Tests.Lighting
             request.AnalysisStart = new DateTime(2018,5,5);
             request.AnalysisStop = new DateTime(2018,5,5);
 
-            var uri = GetFullUri("/V1/lighting/site");
+            var uri = Networking.GetFullUri("/V1/lighting/site");
 
             var lightingResult = 
             Networking.HttpPostCall<SolarLightingData<SiteData>,SolarLightingResponse>(uri, request).Result;

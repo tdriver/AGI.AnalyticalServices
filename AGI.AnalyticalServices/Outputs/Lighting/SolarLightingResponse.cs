@@ -10,20 +10,20 @@ namespace AGI.AnalyticalServices.Outputs.Lighting
 
     public class LightingResponse
     {
-        public DateTime AstronomicalTwilightAmStart { get; set; }
-        public DateTime AstronomicalTwilightAmStop { get; set; }
-        public DateTime AstronomicalTwilightPmStart { get; set; }
-        public DateTime AstronomicalTwilightPmStop { get; set; }
-        public DateTime NauticalTwilightAmStart { get; set; }
-        public DateTime NauticalTwilightAmStop { get; set; }
-        public DateTime NauticalTwilightPmStart { get; set; }
-        public DateTime NauticalTwilightPmStop { get; set; }
-        public DateTime CivilTwilightAmStart { get; set; }
-        public DateTime CivilTwilightAmStop { get; set; }
-        public DateTime CivilTwilightPmStart { get; set; }
-        public DateTime CivilTwilightPmStop { get; set; }
-        public DateTime Sunrise { get; set; }
-        public DateTime Sunset { get; set; }
+        public DateTimeOffset AstronomicalTwilightAmStart { get; set; }
+        public DateTimeOffset AstronomicalTwilightAmStop { get; set; }
+        public DateTimeOffset AstronomicalTwilightPmStart { get; set; }
+        public DateTimeOffset AstronomicalTwilightPmStop { get; set; }
+        public DateTimeOffset NauticalTwilightAmStart { get; set; }
+        public DateTimeOffset NauticalTwilightAmStop { get; set; }
+        public DateTimeOffset NauticalTwilightPmStart { get; set; }
+        public DateTimeOffset NauticalTwilightPmStop { get; set; }
+        public DateTimeOffset CivilTwilightAmStart { get; set; }
+        public DateTimeOffset CivilTwilightAmStop { get; set; }
+        public DateTimeOffset CivilTwilightPmStart { get; set; }
+        public DateTimeOffset CivilTwilightPmStop { get; set; }
+        public DateTimeOffset Sunrise { get; set; }
+        public DateTimeOffset Sunset { get; set; }
         public bool ContinuouslyBelowHorizon { get; set; }
         public bool ContinuouslyAboveHorizon { get; set; }
         public bool IsRiseDefined { get; set; }

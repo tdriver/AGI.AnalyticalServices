@@ -18,11 +18,11 @@ namespace AGI.AnalyticalServices.Inputs.Lighting
         /// <summary>
         /// The start time for the analysis.  This is only used if the PathLocation is a <see cref="SiteData"/>.
         /// </summary>
-        public DateTime AnalysisStart { get; set; }
+        public DateTimeOffset AnalysisStart { get; set; }
         /// <summary>
         /// The stop time for the analysis.  This is only used if the PathLocation is a <see cref="SiteData"/>.
         /// </summary>
-        public DateTime AnalysisStop { get; set; }
+        public DateTimeOffset AnalysisStop { get; set; }
         /// <summary>
         /// Lighting times are output in UTC by default, for any location.
         /// Set this value to the UTC hours offset for your location to return results in local time.

@@ -22,9 +22,6 @@ namespace AgiServiceLibrary.Core.Models
         /// </summary>
         public double Duration { get; set; }
 
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        public override string ToString() => JsonConvert.SerializeObject(this);
     }
 }

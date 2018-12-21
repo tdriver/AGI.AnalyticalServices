@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace AGI.AnalyticalServices.Inputs
 {
     public class ServiceCartographicWithTime : IVerifiable
     {
-
         public ServiceCartographic Position { get; set; }
         public List<SensorState> SensorStates { get; set; }
         public DateTimeOffset Time { get; set; }
@@ -53,10 +53,7 @@ namespace AGI.AnalyticalServices.Inputs
             Time = time;
         }
 
-        public void Verify()
-        {
-            Position.Verify();
-        }
+        public void Verify() => Position.Verify();
 
         public ServiceCartographicWithTime()
         {
@@ -64,9 +61,6 @@ namespace AGI.AnalyticalServices.Inputs
             SensorStates = new List<SensorState>();
         }
 
-        public override string ToString()
-        {
-            return string.Join(", ", Position.ToString(), Time.ToString("O"));
-        }
+        public override string ToString() => JsonConvert.SerializeObject(this);
     }
 }
