@@ -9,7 +9,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
     /// Simple flight routes are defined by a few waypoints, with the vehicle making smooth turns around
     /// each waypoint, all at a constant altitude.
     /// </summary>
-    public class SimpleFlightRoute: IVerifiable
+    public class SimpleFlightRouteData : IVerifiable
     {
         /// <summary>
         /// The start time of the route.
@@ -41,7 +41,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
         /// </summary>
         public OutputSettings OutputSettings { get; set; }
 
-        public SimpleFlightRoute()
+        public SimpleFlightRouteData()
         {
             TurningRadius = 200;
             Speed = 65;

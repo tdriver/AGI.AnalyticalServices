@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace AGI.AnalyticalServices.Tests
+namespace AGI.AnalyticalServices.Util
 {
     public class Networking
     {

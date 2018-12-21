@@ -8,14 +8,14 @@ namespace AGI.AnalyticalServices.Inputs.Routing
     /// <summary>
     /// Defines a route that creates a Great Arc geodesic between Waypoints
     /// </summary>
-    public class GreatArcRoute : IVerifiable
+    public class GreatArcRouteData : IVerifiable
     {
         public List<ServiceCartographicWithTime> Waypoints { get; set; }
         public OutputSettings OutputSettings { get; set; }
 
         public Dictionary<string, string> Properties { get; }
 
-        public GreatArcRoute()
+        public GreatArcRouteData()
         {
             OutputSettings = new OutputSettings();
             Waypoints = new List<ServiceCartographicWithTime>();

@@ -3,7 +3,7 @@
     /// <summary>
     /// A static location on the Earth.
     /// </summary>
-    public class Site: IVerifiable
+    public class SiteData: IVerifiable
     {
         /// <summary>
         /// the location of the Site.
@@ -22,7 +22,7 @@
         /// <summary>
         /// Sets the defaults for a Site.
         /// </summary>
-        public Site()
+        public SiteData()
         {
             Location = new ServiceCartographic();
             MeanSeaLevel = false;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AGI.AnalyticalServices.Inputs.Routing
 {
-    public class PointToPointRoute:IVerifiable
+    public class PointToPointRouteData:IVerifiable
     {
         /// <summary>
         /// The Waypoints defining the route
@@ -27,7 +27,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
         /// <see cref="ServiceCartographicWithTime"/> objects.  Also sets other defaults.
         /// </summary>
         /// <param name="numberOfPointsToAdd"></param>
-        public PointToPointRoute(int numberOfPointsToAdd)
+        public PointToPointRouteData(int numberOfPointsToAdd)
         {
             Waypoints = new List<ServiceCartographicWithTime>();
             for (int i = 0; i < numberOfPointsToAdd; i++)
@@ -38,20 +38,20 @@ namespace AGI.AnalyticalServices.Inputs.Routing
             OutputSettings = new OutputSettings();
         }
         /// <summary>
-        /// Defines the PointToPointRoute by a Json string returned from the PointToPoint Routing Service
+        /// Defines the PointToPointRouteData by a Json string returned from the PointToPoint Routing Service
         /// </summary>
         /// <param name="jsonPointToPointRoute"></param>
-        public PointToPointRoute(string jsonPointToPointRoute)
+        public PointToPointRouteData(string jsonPointToPointRoute)
         {
         
-            var temp = JsonConvert.DeserializeObject<PointToPointRoute>(jsonPointToPointRoute);
+            var temp = JsonConvert.DeserializeObject<PointToPointRouteData>(jsonPointToPointRoute);
             Waypoints = temp.Waypoints;
             IncludeWaypointsInRoute = temp.IncludeWaypointsInRoute;
             OutputSettings = temp.OutputSettings;
             
         }
 
-        public PointToPointRoute()
+        public PointToPointRouteData()
         {
             Waypoints = new List<ServiceCartographicWithTime>();
             IncludeWaypointsInRoute = false;

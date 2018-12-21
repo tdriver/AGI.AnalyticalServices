@@ -9,7 +9,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
     /// <summary>
     /// An orbit route based on a Two Line Element (TLE) set.
     /// </summary>
-    public class Sgp4Route : IVerifiable
+    public class Sgp4RouteData : IVerifiable
     {
         /// <summary>
         /// The start time for the vehicle following the orbital path.
@@ -29,7 +29,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
         public List<string> TLEs { get; set; }
         public OutputSettings OutputSettings { get; set; }
 
-        public Sgp4Route()
+        public Sgp4RouteData()
         {
             OutputSettings = new OutputSettings();
         }

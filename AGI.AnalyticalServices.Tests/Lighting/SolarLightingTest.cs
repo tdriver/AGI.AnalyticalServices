@@ -4,6 +4,7 @@ using AGI.AnalyticalServices.Inputs.Routing;
 using AGI.AnalyticalServices.Inputs.Lighting;
 using AGI.AnalyticalServices.Outputs.Lighting;
 using NUnit.Framework;
+using AGI.AnalyticalServices.Util;
 
 namespace AGI.AnalyticalServices.Tests.Lighting
 {
@@ -13,8 +14,8 @@ namespace AGI.AnalyticalServices.Tests.Lighting
         [Test]
         public void TestSolarLighting()
         {
-            var request = new SolarLighting<Site>();
-            request.Path = new Site();
+            var request = new SolarLightingData<SiteData>();
+            request.Path = new SiteData();
             request.Path.Location.Latitude = 39.0;
             request.Path.Location.Longitude = -104.77;
             request.Path.Location.Altitude = 1910;
@@ -24,7 +25,7 @@ namespace AGI.AnalyticalServices.Tests.Lighting
             var uri = GetFullUri("/V1/lighting/site");
 
             var lightingResult = 
-            Networking.HttpPostCall<SolarLighting<Site>,SolarLightingResponse>(uri, request).Result;
+            Networking.HttpPostCall<SolarLightingData<SiteData>,SolarLightingResponse>(uri, request).Result;
             Assert.That(lightingResult != null);
             Assert.That(lightingResult.Lighting.Count == 1);
             Assert.That(lightingResult.Lighting[0].Sunrise.Hour == 5);

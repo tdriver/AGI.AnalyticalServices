@@ -9,7 +9,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
     /// A route defined by the ephemeris associated with a STK Data Federate (SDF) catalog object. 
     /// The returned route depends on how the route is defined in the catalog object.
     /// </summary>
-    public class CatalogData : IVerifiable
+    public class CatalogRouteData : IVerifiable
     {
         /// <summary>
         /// The start date and time for the route.
@@ -30,7 +30,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
         /// </summary>
         public OutputSettings OutputSettings { get; set; }
 
-        public CatalogData()
+        public CatalogRouteData()
         {
             OutputSettings = new OutputSettings();
         }

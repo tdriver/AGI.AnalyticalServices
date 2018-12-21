@@ -5,7 +5,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
     /// <summary>
     /// A route that defines an orbital path, but also include parameters for visualization in CZML.
     /// </summary>
-    public class Sgp4CzmlRouteData : Sgp4Route
+    public class Sgp4CzmlRouteData : Sgp4RouteData
     {
         /// <summary>
         /// The amount of time that the orbit will be shown in front of the orbital vehicle's position, in seconds.

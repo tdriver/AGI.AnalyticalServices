@@ -8,7 +8,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
     /// <summary>
     /// A raster search grid route.
     /// </summary>
-    public class RasterRoute :IVerifiable
+    public class RasterRouteData :IVerifiable
     {
         /// <summary>
         /// The time to start traveling from the beginning of the route.
@@ -54,7 +54,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
         /// </summary>
         public OutputSettings OutputSettings { get; set; }
 
-        public RasterRoute()
+        public RasterRouteData()
         {
             SearchHeading = 0;
             TurningRadius = 200;

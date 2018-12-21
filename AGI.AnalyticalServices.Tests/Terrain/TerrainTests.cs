@@ -5,6 +5,7 @@ using System.Text;
 using AGI.AnalyticalServices.Inputs;
 using AGI.AnalyticalServices.Inputs.Routing;
 using AGI.AnalyticalServices.Outputs.Terrain;
+using AGI.AnalyticalServices.Util;
 using NUnit.Framework;
 
 namespace AGI.AnalyticalServices.Tests.Terrain
@@ -15,7 +16,7 @@ namespace AGI.AnalyticalServices.Tests.Terrain
         [Test]
         public void TestTerrainAlongPointToPointRoute()
         {
-            var request = new PointToPointRoute(2);
+            var request = new PointToPointRouteData(2);
             
             request.Waypoints[0].Position = new ServiceCartographic
             {
@@ -37,7 +38,7 @@ namespace AGI.AnalyticalServices.Tests.Terrain
             var uri = GetFullUri("/V1/terrain/pointtopoint");
 
             var terrainHeightResult =  
-            Networking.HttpPostCall<PointToPointRoute,List<TerrainHeightAtLocation>>(uri, request).Result;
+            Networking.HttpPostCall<PointToPointRouteData,List<TerrainHeightAtLocation>>(uri, request).Result;
 
             Assert.That(terrainHeightResult != null);
             Assert.That(terrainHeightResult.Count == 181);
