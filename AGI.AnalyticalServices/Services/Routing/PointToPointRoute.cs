@@ -8,7 +8,7 @@ namespace AGI.AnalyticalServices.Services.Routing
 {
     /// <summary>
     /// A propagated point to point route, defined by a few waypoints.  Point to point routes do not take terrain
-    /// into account.await  If your waypoints lead to a path that intersects terrain, no adjust ments are
+    /// into account. If your waypoints lead to a path that intersects terrain, no adjustments are
     /// made by this route type.
     /// </summary>
     public class PointToPointRoute

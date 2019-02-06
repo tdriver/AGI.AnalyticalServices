@@ -55,27 +55,32 @@ namespace AGI.AnalyticalServices.Util
 
         }
 
+        /// <summary>
+        /// Initializes the apikey and base url from the config file.abstract  If there are issues with
+        ///  the config file, a TypeInitializationException will be thrown, with the InnerException
+        ///  describing the problem.
+        /// </summary>
          public static void Init()
         {
-            try
+
+            var efm = new ExeConfigurationFileMap { ExeConfigFilename = "AGI.AnalyticalServices.config" };
+            var configuration = ConfigurationManager.OpenMappedExeConfiguration(efm, ConfigurationUserLevel.None);
+            AppSettingsSection asc = (AppSettingsSection)configuration.GetSection("appSettings");
+            if (asc.Settings.Count == 0)
             {
-                var efm = new ExeConfigurationFileMap { ExeConfigFilename = "AGI.AnalyticalServices.config" };
-                var configuration = ConfigurationManager.OpenMappedExeConfiguration(efm, ConfigurationUserLevel.None);
-                AppSettingsSection asc = (AppSettingsSection)configuration.GetSection("appSettings");
-                ApiKey = asc.Settings["ApiKey"].Value;
-                if (string.IsNullOrEmpty(ApiKey))
-                {
-                    throw new ArgumentNullException("The ApiKey is not defined in the configuration file.");
-                }
-                var url = asc.Settings["BaseUrl"].Value;
-                if (string.IsNullOrEmpty(url))
-                {
-                    throw new ArgumentNullException("The BaseUrl is not defined in the configuration file.");
-                }
-                BaseUri = new Uri(url);
-            }catch(Exception e){
-                throw new ConfigurationErrorsException("There is an error with the configuration file: " + e.Message);
+                throw new ConfigurationErrorsException("The configuration file is missing or empty.");
             }
+            ApiKey = asc.Settings["ApiKey"].Value;
+            if (string.IsNullOrEmpty(ApiKey))
+            {
+                throw new ConfigurationErrorsException("The ApiKey is not defined in the configuration file.");
+            }
+            var url = asc.Settings["BaseUrl"].Value;
+            if (string.IsNullOrEmpty(url))
+            {
+                throw new ConfigurationErrorsException("The BaseUrl is not defined in the configuration file.");
+            }
+            BaseUri = new Uri(url);            
         }
 
         public static Uri GetFullUri(string relativeUri) => new Uri(BaseUri, relativeUri + "?u=" + ApiKey);
