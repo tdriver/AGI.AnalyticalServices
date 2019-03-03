@@ -6,7 +6,6 @@ namespace AGI.AnalyticalServices.Inputs.Airspaces
 {
     public class AirspaceProximityCzmlData : AirspaceCzmlData, IVerifiable
     {
-        private string classname = "AirspaceProximityCzmlData";
         /// <summary>
         /// The color the proximity boundary of the airspace will be rendered in. Default is Gold.
         /// </summary>

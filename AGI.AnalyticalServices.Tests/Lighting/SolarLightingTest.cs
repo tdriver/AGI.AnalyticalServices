@@ -25,15 +25,14 @@ namespace AGI.AnalyticalServices.Tests.Lighting
             var uri = Networking.GetFullUri("/V1/lighting/site");
 
             var lightingResult = 
-            Networking.HttpPostCall<SolarLightingData<SiteData>,SolarLightingResponse>(uri, request).Result;
+            Networking.HttpPostCall<SolarLightingData<SiteData>,PathFlightLightingConditions>(uri, request).Result;
             Assert.That(lightingResult != null);
-            Assert.That(lightingResult.Lighting.Count == 1);
-            Assert.That(lightingResult.Lighting[0].Sunrise.Hour == 5);
-            Assert.That(lightingResult.Lighting[0].Sunrise.Minute == 56);
-            Assert.That(lightingResult.Lighting[0].Sunrise.Second == 20);
-            Assert.That(lightingResult.Lighting[0].Sunset.Hour == 19);
-            Assert.That(lightingResult.Lighting[0].Sunset.Minute == 55);
-            Assert.That(lightingResult.Lighting[0].Sunset.Second == 49);
+            Assert.That(lightingResult.FlightLightingInfo.Sunrise.Hour == 5);
+            Assert.That(lightingResult.FlightLightingInfo.Sunrise.Minute == 56);
+            Assert.That(lightingResult.FlightLightingInfo.Sunrise.Second == 20);
+            Assert.That(lightingResult.FlightLightingInfo.Sunset.Hour == 19);
+            Assert.That(lightingResult.FlightLightingInfo.Sunset.Minute == 55);
+            Assert.That(lightingResult.FlightLightingInfo.Sunset.Second == 49);
 
         }
     }

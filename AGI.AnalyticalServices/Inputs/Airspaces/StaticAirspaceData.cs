@@ -6,7 +6,6 @@ namespace AGI.AnalyticalServices.Inputs.Airspaces
 {
     public class StaticAirspaceData : IVerifiable
     {
-        private string classname = "StaticAirspaceData";
         /// <summary>
         /// When true, will return results that apply a horizontal proximity boundary around the airspace, 
         /// using the <see cref="HorizontalProximityThreshold"/> parameter.  When false, the results reflect actual airspace incursions.

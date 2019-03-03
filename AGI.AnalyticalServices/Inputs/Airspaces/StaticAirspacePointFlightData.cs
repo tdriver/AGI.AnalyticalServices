@@ -6,8 +6,6 @@ namespace AGI.AnalyticalServices.Inputs.Airspaces
 {
     public class StaticAirspacePointFlightData : StaticAirspaceData,IVerifiable
     {
-        private string classname = "StaticAirspacePointFlightData";
-
         public ServiceCartographic Center { get; set; }
         public double Radius { get; set; }
         /// <summary>
