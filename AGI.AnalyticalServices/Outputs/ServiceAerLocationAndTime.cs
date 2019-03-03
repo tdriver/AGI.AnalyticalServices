@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace AGI.AnalyticalServices
+namespace AGI.AnalyticalServices.Outputs
 {
     public class ServiceAerLocationAndTime
     {
