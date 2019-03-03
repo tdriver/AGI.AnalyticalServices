@@ -2,7 +2,7 @@ using System;
 using AGI.AnalyticalServices.Inputs;
 using Newtonsoft.Json;
 
-namespace AGI.AnalyticalServices.Outputs
+namespace AGI.AnalyticalServices.Outputs.Terrain
 {
     public class HeightsAtLocation : Heights
     {

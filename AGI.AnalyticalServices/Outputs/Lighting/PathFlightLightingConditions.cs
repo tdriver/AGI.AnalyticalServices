@@ -24,6 +24,10 @@ namespace AGI.AnalyticalServices.Outputs.Lighting
         /// true if a sunset occurred between the start and stop times
         /// </summary>
         public bool SunsetBetweenStartAndEnd { get; set; }
+
+        // public PathFlightLightingConditions(){
+        //     FlightLightingInfo = new LightingInfo();
+        // }
        
     }
 }

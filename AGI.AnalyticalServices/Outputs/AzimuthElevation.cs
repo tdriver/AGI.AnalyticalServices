@@ -1,4 +1,3 @@
-
 using System;
 
 namespace AGI.AnalyticalServices.Outputs
