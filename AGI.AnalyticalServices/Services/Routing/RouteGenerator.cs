@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AGI.AnalyticalServices.Inputs;
@@ -12,9 +13,6 @@ namespace AGI.AnalyticalServices.Services.Routing
     /// </summary>
     public class RouteGenerator
     {
-        const string pointToPointRouteUri = "/V1/vehiclePath/pointToPoint";
-        const string sgp4RouteUri = "/V1/vehiclePath/sgp4";
-        /// <summary>
         /// Gets a propagated route.
         /// </summary>
         /// <param name="routeData">The data defining the route.</param>
@@ -29,8 +27,28 @@ namespace AGI.AnalyticalServices.Services.Routing
         {
             string relativeUri = string.Empty;
             if(typeof(T) == typeof(PointToPointRouteData)){
-                relativeUri = pointToPointRouteUri;
+                relativeUri = ServiceUris.PointToPointRouteUri;
             }
+            else if(typeof(T) == typeof(Sgp4RouteData)){
+                relativeUri = ServiceUris.Sgp4RouteUri;
+            }
+            else if(typeof(T) == typeof(TolRouteData)){
+                relativeUri = ServiceUris.TolRouteUri;
+            }
+            else if(typeof(T) == typeof(RasterRouteData)){
+                relativeUri = ServiceUris.RasterRouteUri;
+            }
+            else if(typeof(T) == typeof(GreatArcRouteData)){
+                relativeUri = ServiceUris.GreatArcRouteUri;
+            }
+            else if(typeof(T) == typeof(CatalogRouteData)){
+                relativeUri = ServiceUris.CatalogObjectRouteUri;
+            }
+            if(string.IsNullOrEmpty(relativeUri)){
+                throw new ArgumentOutOfRangeException("routeData",typeof(T), 
+                            typeof(T) + " is not a valid type for route generation");
+            }
+            
             var uri = Networking.GetFullUri(relativeUri);
             return await Networking.HttpPostCall<T, List<R>>(uri, routeData);
         }
