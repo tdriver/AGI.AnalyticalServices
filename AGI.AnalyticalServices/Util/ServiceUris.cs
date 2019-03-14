@@ -17,8 +17,9 @@ namespace AGI.AnalyticalServices.Util{
         public const string AccessSatellitePassesTolUri = "/V1/access/satellitePasses/tol";
         public const string AccessSatellitePassesSimpleFlightUri = "/V1/access/satellitePasses/simpleFlight";
         public const string AccessSatellitePassesGreatArcUri = "/V1/access/satellitePasses/greatArc";
-// Navigation Services
+// Communication Services
         public const string CommunicationsLinkBudgetUri = "/V1/communications/linkbudget";
+// Navigation Services
         public const string NavigationGpsOutagesUri = "/V1/navigation/gpsSatelliteOutages";
         public const string NavigationPafDataUri = "/V1/navigation/PAFData";
         public const string NavigationPsfDataUri = "/V1/navigation/PSFData";

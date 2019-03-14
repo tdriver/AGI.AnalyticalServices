@@ -22,8 +22,14 @@ namespace AGI.AnalyticalServices.Services.Routing
             if((Type)accessData.FromObjectPath == typeof(PointToPointRouteData)){
                 relativeUri = ServiceUris.PointToPointRouteUri;
             }
+            else if((Type)accessData.FromObjectPath == typeof(SiteData)){
+                relativeUri = ServiceUris.AccessSatellitePassesSiteUri;
+            }
             else if((Type)accessData.FromObjectPath == typeof(Sgp4RouteData)){
                 relativeUri = ServiceUris.AccessSatellitePassesSgp4Uri;
+            }
+            else if((Type)accessData.FromObjectPath == typeof(SimpleFlightRouteData)){
+                relativeUri = ServiceUris.AccessSatellitePassesSimpleFlightUri;
             }
             else if((Type)accessData.FromObjectPath == typeof(TolRouteData)){
                 relativeUri = ServiceUris.AccessSatellitePassesTolUri;
@@ -37,9 +43,10 @@ namespace AGI.AnalyticalServices.Services.Routing
             else if((Type)accessData.FromObjectPath == typeof(CatalogRouteData)){
                 relativeUri = ServiceUris.CatalogObjectRouteUri;
             }
+            
             if(string.IsNullOrEmpty(relativeUri)){
-                throw new ArgumentOutOfRangeException("routeData",(Type)accessData.FromObjectPath, 
-                            (Type)accessData.FromObjectPath  + " is not a valid type for route generation");
+                throw new ArgumentOutOfRangeException("accessData",(Type)accessData.FromObjectPath, 
+                            (Type)accessData.FromObjectPath  + " is not a valid type for Satellite Passes");
             }
             
             var uri = Networking.GetFullUri(relativeUri);
