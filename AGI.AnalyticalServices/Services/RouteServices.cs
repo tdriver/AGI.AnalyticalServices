@@ -11,7 +11,7 @@ namespace AGI.AnalyticalServices.Services.Routing
     /// A propagated route, defined by a few waypoints.  See the service documentation for 
     /// notes on the different route types: https://saas.agi.com/V1/Documentation/Routing.
     /// </summary>
-    public class RouteGenerator
+    public class RouteServices
     {
         /// Gets a propagated route.
         /// </summary>

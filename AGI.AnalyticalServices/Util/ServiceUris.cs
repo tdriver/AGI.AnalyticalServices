@@ -8,7 +8,7 @@ namespace AGI.AnalyticalServices.Util{
         public const string TolRouteUri = "/V1/vehiclePath/tol";
         public const string RasterRouteUri = "/V1/vehiclePath/raster";
         public const string CatalogObjectRouteUri = "/V1/vehiclePath/catalogObject";
-//Satellite Passes Services
+//Satellite Pass Services
         public const string AccessSatellitePassesSiteUri = "/V1/access/satellitePasses/site";
         public const string AccessSatellitePassesSgp4Uri = "/V1/access/satellitePasses/sgp4";
         public const string AccessSatellitePassesPointToPointUri = "/V1/access/satellitePasses/pointToPoint";

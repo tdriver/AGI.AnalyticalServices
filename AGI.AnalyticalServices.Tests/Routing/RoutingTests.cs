@@ -35,7 +35,7 @@ namespace AGI.AnalyticalServices.Tests.Routing
             request.Waypoints[1].Time = new DateTime(2018,10,30,1,0,0);
             request.OutputSettings.Step = 20;            
 
-            var result = RouteGenerator.GetRoute<PointToPointRouteData,ServiceCartographicWithTime>(request).Result;
+            var result = RouteServices.GetRoute<PointToPointRouteData,ServiceCartographicWithTime>(request).Result;
 
             // Tests are here to verify the results are returned and formatted correctly
             Assert.That(result != null);
@@ -68,7 +68,7 @@ namespace AGI.AnalyticalServices.Tests.Routing
             request.OutputSettings.Step = 45;     
             request.OutputSettings.CoordinateFormat.Coord = CoordinateRepresentation.XYZ;       
 
-            var result = RouteGenerator.GetRoute<PointToPointRouteData,ServiceCartesianWithTime>(request).Result;
+            var result = RouteServices.GetRoute<PointToPointRouteData,ServiceCartesianWithTime>(request).Result;
 
             // Tests are here to verify the results are returned and formatted correctly
             Assert.That(result != null);
