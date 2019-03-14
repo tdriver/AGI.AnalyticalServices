@@ -34,14 +34,7 @@ namespace AGI.AnalyticalServices.Util
         /// <param name="postData">The post data to provide to the web service.</param>
         /// <exception cref="WebException">Thrown if response code is anything other than OK.</exception>
         /// <returns>Result from the Web service, as R.</returns>
-        public static async Task<R> HttpPostCall<T, R>(Uri address, T postData)
-        {
-            if (_client == null)
-            {
-                _client = new HttpClient();
-                _client.DefaultRequestHeaders.Accept.Clear();
-                _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            }
+        public static async Task<R> HttpPostCall<T, R>(Uri address, T postData){
 
             var postDataS = JsonConvert.SerializeObject(postData);
             HttpContent postContent = new StringContent(postDataS,Encoding.UTF8,"application/json");
@@ -50,9 +43,24 @@ namespace AGI.AnalyticalServices.Util
             if (!response.IsSuccessStatusCode) throw new WebException("Error code: " + response.StatusCode);
 
             var jsonResponse = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<R>(jsonResponse);
+            
+            R result;
+
+            try{
+                result = JsonConvert.DeserializeObject<R>(jsonResponse);
+            }catch{
+                throw new ArgumentOutOfRangeException($"Unable to convert web response to type: {typeof(R)}");
+            }
             return result;
 
+        }
+
+        public static async Task<string> HttpGetCall(Uri address){
+            
+            var response = await _client.GetAsync(address);
+            if (!response.IsSuccessStatusCode) throw new WebException("Error code: " + response.StatusCode);
+
+            return await response.Content.ReadAsStringAsync();
         }
 
         /// <summary>
@@ -80,9 +88,36 @@ namespace AGI.AnalyticalServices.Util
             {
                 throw new ConfigurationErrorsException("The BaseUrl is not defined in the configuration file.");
             }
-            BaseUri = new Uri(url);            
+            BaseUri = new Uri(url);   
+
+            if (_client == null)
+            {
+                _client = new HttpClient();
+                _client.DefaultRequestHeaders.Accept.Clear();
+                _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }         
         }
 
         public static Uri GetFullUri(string relativeUri) => new Uri(BaseUri, relativeUri + "?u=" + ApiKey);
+
+        public static Uri AppendDateToUri(Uri existingUri, DateTime? date){
+            if(date.HasValue)
+                return new Uri(existingUri,$"&date={date.Value.Date.ToString("YYYY-MM-DD")}");
+            throw new ArgumentNullException("date","The date must be supplied");
+        }
+        public static Uri AppendDateTimeAndPrnToUri(Uri existingUri,
+                                                    DateTime? fromDate,
+                                                    DateTime? toDate,
+                                                    int? prn){
+            Uri result = existingUri;
+            if(fromDate.HasValue && toDate.HasValue){
+                result = new Uri(result, $"&from={fromDate.Value.ToString("YYYY-MM-DDTHH:mm:ss")}");
+                result = new Uri(result,$"&to={toDate.Value.ToString("YYYY-MM-DDTHH:mm:ss")}");
+            }
+            if(prn.HasValue){
+                result = new Uri(result,$"&prn={prn.Value}");
+            }                            
+            return result;
+        }
     }
 }

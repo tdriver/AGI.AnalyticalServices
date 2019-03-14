@@ -3,6 +3,11 @@ using Newtonsoft.Json;
 
 namespace AGI.AnalyticalServices.Outputs.Access
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T">Type of position data returned.null  
+    /// Usually ServiceCartographicWithTime or ServiceCartesianWithTime</typeparam>
     public class OverflightAccessResult<T>
         where T: IPathResult
     {

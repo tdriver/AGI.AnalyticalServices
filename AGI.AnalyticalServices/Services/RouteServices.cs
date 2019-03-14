@@ -41,6 +41,9 @@ namespace AGI.AnalyticalServices.Services.Routing
             else if(typeof(T) == typeof(GreatArcRouteData)){
                 relativeUri = ServiceUris.GreatArcRouteUri;
             }
+            else if(typeof(T) == typeof(SimpleFlightRouteData)){
+                relativeUri = ServiceUris.SimpleFlightRouteUri;
+            }
             else if(typeof(T) == typeof(CatalogRouteData)){
                 relativeUri = ServiceUris.CatalogObjectRouteUri;
             }

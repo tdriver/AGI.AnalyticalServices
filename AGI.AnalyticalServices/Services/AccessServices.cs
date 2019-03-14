@@ -20,7 +20,7 @@ namespace AGI.AnalyticalServices.Services.Routing
             accessData.Verify();
             
             if((Type)accessData.FromObjectPath == typeof(PointToPointRouteData)){
-                relativeUri = ServiceUris.PointToPointRouteUri;
+                relativeUri = ServiceUris.AccessSatellitePassesPointToPointUri;
             }
             else if((Type)accessData.FromObjectPath == typeof(SiteData)){
                 relativeUri = ServiceUris.AccessSatellitePassesSiteUri;
@@ -35,13 +35,13 @@ namespace AGI.AnalyticalServices.Services.Routing
                 relativeUri = ServiceUris.AccessSatellitePassesTolUri;
             }
             else if((Type)accessData.FromObjectPath == typeof(RasterRouteData)){
-                relativeUri = ServiceUris.RasterRouteUri;
+                relativeUri = ServiceUris.AccessSatellitePassesRasterUri;
             }
             else if((Type)accessData.FromObjectPath == typeof(GreatArcRouteData)){
-                relativeUri = ServiceUris.GreatArcRouteUri;
+                relativeUri = ServiceUris.AccessSatellitePassesGreatArcUri;
             }
             else if((Type)accessData.FromObjectPath == typeof(CatalogRouteData)){
-                relativeUri = ServiceUris.CatalogObjectRouteUri;
+                relativeUri = ServiceUris.AccessSatellitePassesCatalogObjectUri;
             }
             
             if(string.IsNullOrEmpty(relativeUri)){

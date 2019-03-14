@@ -42,6 +42,7 @@ namespace AGI.AnalyticalServices.Util{
         public const string NavigationDopTolUri = "/V1/navigation/dop/tol";
         public const string NavigationDopRasterUri = "/V1/navigation/dop/raster";
         public const string NavigationDopGreatArcUri = "/V1/navigation/dop/greatArc";
+        public const string NavigationDopSimpleFlightUri = "/V1/navigation/dop/simpleFlight";
 // Ovrflight Services
         public const string OverflightSgp4Uri = "/V1/overflight/sgp4";
         public const string OverflightSimpleFlightUri = "/V1/overflight/simpleFlight";
