@@ -18,18 +18,39 @@ namespace AGI.AnalyticalServices.Services.Airspace
     /// </summary>
     public class CzmlServices
     {
+        /// <summary>
+        /// Gets orbits to visualize.
+        /// </summary>
+        /// <param name="czmlRouteData">Data defining the routes to visualize.</param>
+        /// <returns>A Czml string.</returns>
         public static async Task<string> GetSgp4Czml(Sgp4CzmlRouteData czmlRouteData){
             czmlRouteData.Verify();                                   
             var uri = Networking.GetFullUri(ServiceUris.VehiclePathCzmlSgp4Uri);            
             return await Networking.HttpPostCall<Sgp4CzmlRouteData,string>(uri, czmlRouteData);
         }     
 
+        /// <summary>
+        /// Gets airspace shapes to visualize.
+        /// </summary>
+        /// <param name="czmlAirspaceData">Data defining the airspaces to visualize.</param>
+        /// <returns>A string of Czml</returns>
         public static async Task<AirspaceCzml> GetAirspaceCzml(AirspaceCzmlData czmlAirspaceData){
             czmlAirspaceData.Verify();                                   
             var uri = Networking.GetFullUri(ServiceUris.AirspaceCzmlUri);            
             return await Networking.HttpPostCall<AirspaceCzmlData,AirspaceCzml>(uri, czmlAirspaceData);
         }  
-       
+
+       /// <summary>
+       /// Gets Czml data representing the positions of Gps satellites in orbit
+       /// </summary>
+       /// <param name="czmlGpsData">Data defining the satellites to display</param>
+       /// <param name="start">Start time for the orbits</param>
+       /// <param name="stop">Stop time for th eorbits</param>
+       /// <param name="highlightOutages">When true, satellites with outages will be highlighted with a color.</param>
+       /// <param name="outageColor">The color to use when highlighting a satellite orbit with an outage.</param>
+       /// <param name="useInertial">Whjen true, the orbits are shown in an inertial frame, an
+       /// Earth-Fixed frame is used when false.</param>
+       /// <returns>A string of Czml data.</returns>
        public static async Task<string> GetGpsOrbitsCzml(CzmlGpsOrbit czmlGpsData, DateTime start, DateTime stop, 
                                                         bool highlightOutages = true, Color outageColor = Color.White,
                                                         bool useInertial = true){
