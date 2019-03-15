@@ -23,8 +23,10 @@ namespace AGI.AnalyticalServices.Services.Routing
         /// <returns>A Task containing a List of type R results. R is typically 
         /// <see cref="ServiceCartographicWithTime"/> or a similar type.
         /// </returns>
-        public static async Task<List<R>> GetRoute<T,R>(T routeData)
+        public static async Task<List<R>> GetRoute<T,R>(T routeData) where T: IVerifiable
         {
+            routeData.Verify();
+
             string relativeUri = string.Empty;
             if(typeof(T) == typeof(PointToPointRouteData)){
                 relativeUri = ServiceUris.PointToPointRouteUri;

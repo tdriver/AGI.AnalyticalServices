@@ -10,7 +10,7 @@ using AGI.AnalyticalServices.Inputs.Routing;
 
 using AGI.AnalyticalServices.Util;
 
-namespace AGI.AnalyticalServices.Services.Airspace
+namespace AGI.AnalyticalServices.Services.Czml
 {
     /// <summary>
     /// Czml methods.  See the service documentation for 
@@ -48,7 +48,7 @@ namespace AGI.AnalyticalServices.Services.Airspace
        /// <param name="stop">Stop time for th eorbits</param>
        /// <param name="highlightOutages">When true, satellites with outages will be highlighted with a color.</param>
        /// <param name="outageColor">The color to use when highlighting a satellite orbit with an outage.</param>
-       /// <param name="useInertial">Whjen true, the orbits are shown in an inertial frame, an
+       /// <param name="useInertial">When true, the orbits are shown in an inertial frame, an
        /// Earth-Fixed frame is used when false.</param>
        /// <returns>A string of Czml data.</returns>
        public static async Task<string> GetGpsOrbitsCzml(CzmlGpsOrbit czmlGpsData, DateTime start, DateTime stop, 

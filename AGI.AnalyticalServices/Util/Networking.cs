@@ -52,7 +52,23 @@ namespace AGI.AnalyticalServices.Util
                 throw new ArgumentOutOfRangeException($"Unable to convert web response to type: {typeof(R)}");
             }
             return result;
+        }
 
+        public static async Task<R> HttpGetCall<R>(Uri address){
+
+            var response = await _client.GetAsync(address);
+            if (!response.IsSuccessStatusCode) throw new WebException("Error code: " + response.StatusCode);
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            
+            R result;
+
+            try{
+                result = JsonConvert.DeserializeObject<R>(jsonResponse);
+            }catch{
+                throw new ArgumentOutOfRangeException($"Unable to convert web response to type: {typeof(R)}");
+            }
+            return result;
         }
 
         public static async Task<string> HttpGetCall(Uri address){
