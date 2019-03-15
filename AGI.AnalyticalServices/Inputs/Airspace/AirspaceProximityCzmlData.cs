@@ -2,7 +2,7 @@ using System;
 using AGI.AnalyticalServices.Exceptions;
 using Newtonsoft.Json;
 
-namespace AGI.AnalyticalServices.Inputs.Airspaces
+namespace AGI.AnalyticalServices.Inputs.Airspace
 {
     public class AirspaceProximityCzmlData : AirspaceCzmlData, IVerifiable
     {

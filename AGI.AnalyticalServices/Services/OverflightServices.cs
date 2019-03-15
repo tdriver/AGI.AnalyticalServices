@@ -7,7 +7,7 @@ using AGI.AnalyticalServices.Inputs.Access;
 using AGI.AnalyticalServices.Outputs.Access;
 using AGI.AnalyticalServices.Util;
 
-namespace AGI.AnalyticalServices.Services.Routing
+namespace AGI.AnalyticalServices.Services.Overflight
 {
     /// <summary>
     /// Overflight service methods.  See the service documentation for 

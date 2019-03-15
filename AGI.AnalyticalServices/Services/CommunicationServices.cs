@@ -5,7 +5,7 @@ using AGI.AnalyticalServices.Inputs;
 using AGI.AnalyticalServices.Inputs.Communications;
 using AGI.AnalyticalServices.Util;
 
-namespace AGI.AnalyticalServices.Services.Routing
+namespace AGI.AnalyticalServices.Services.Communications
 {
     /// <summary>
     /// Communication methods.  See the service documentation for 

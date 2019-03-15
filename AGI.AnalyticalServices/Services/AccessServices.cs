@@ -6,7 +6,7 @@ using AGI.AnalyticalServices.Inputs.Access;
 using AGI.AnalyticalServices.Inputs.Routing;
 using AGI.AnalyticalServices.Util;
 
-namespace AGI.AnalyticalServices.Services.Routing
+namespace AGI.AnalyticalServices.Services.Access
 {
     /// <summary>
     /// Access methods.  See the service documentation for 

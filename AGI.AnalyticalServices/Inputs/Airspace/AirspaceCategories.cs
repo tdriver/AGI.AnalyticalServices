@@ -1,4 +1,4 @@
-namespace AGI.AnalyticalServices.Inputs.Airspaces
+namespace AGI.AnalyticalServices.Inputs.Airspace
 {
     public enum AirspaceCategory
     {

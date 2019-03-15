@@ -7,7 +7,7 @@ using AGI.AnalyticalServices.Outputs.Navigation;
 using AGI.AnalyticalServices.Inputs.Routing;
 using AGI.AnalyticalServices.Util;
 
-namespace AGI.AnalyticalServices.Services.Routing
+namespace AGI.AnalyticalServices.Services.Navigation
 {
     /// <summary>
     /// Navigation methods.  See the service documentation for 

@@ -1,7 +1,7 @@
 
 using Newtonsoft.Json;
 
-namespace AGI.AnalyticalServices.Inputs.Airspaces
+namespace AGI.AnalyticalServices.Inputs.Airspace
 {
     public class StaticAirspaceRealTimeData: StaticAirspaceData, IVerifiable
     {
