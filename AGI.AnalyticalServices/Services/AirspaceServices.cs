@@ -41,7 +41,29 @@ namespace AGI.AnalyticalServices.Services.Airspace
             return await 
             Networking.HttpPostCall<StaticAirspaceRouteData<IVerifiable>, 
                             StaticAirspaceAccessResult<AirspaceCrossingResult<IPathResult>>>(uri, airspaceRouteData);
-        }        
+        }     
+
+        public static async Task<StaticAirspaceAccessResult<AirspaceIdentifier>> 
+            GetAirspaceCrossingsForACylinder(StaticAirspacePointFlightData airspacePfData){
+
+            string relativeUri = ServiceUris.AirspacePointFlightUri;            
+            airspacePfData.Verify();                     
+            var uri = Networking.GetFullUri(relativeUri);            
+            return await Networking.HttpPostCall<StaticAirspacePointFlightData, 
+                    StaticAirspaceAccessResult<AirspaceIdentifier>>(uri, airspacePfData);
+        }      
+
+        public static async Task<AirspaceIdResult> SelectAirspaces(AirspaceSelectionOptions seletionOptions)  {
+            seletionOptions.Verify();
+            var uri = Networking.GetFullUri(ServiceUris.AirspaceSelectAirspacesUri);            
+            return await Networking.HttpPostCall<AirspaceSelectionOptions, AirspaceIdResult>(uri, seletionOptions);
+        }
+
+        public static async Task<AirspaceIdResult> RealTime(StaticAirspaceRealTimeData realTimeData)  {
+            realTimeData.Verify();
+            var uri = Networking.GetFullUri(ServiceUris.AirspaceRealTimeUri);            
+            return await Networking.HttpPostCall<StaticAirspaceRealTimeData, AirspaceIdResult>(uri, realTimeData);
+        }
     }
 
 }
