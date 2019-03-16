@@ -52,7 +52,7 @@ namespace AGI.AnalyticalServices.Services.Czml
        /// Earth-Fixed frame is used when false.</param>
        /// <returns>A string of Czml data.</returns>
        public static async Task<string> GetGpsOrbitsCzml(CzmlGpsOrbit czmlGpsData, DateTime start, DateTime stop, 
-                                                        bool highlightOutages = true, Color outageColor = Color.White,
+                                                        bool highlightOutages = true, string outageColor = "White",
                                                         bool useInertial = true){
             czmlGpsData.Verify();                                   
             var uri = Networking.GetFullUri(ServiceUris.VehiclePathCzmlGpsUri);      
