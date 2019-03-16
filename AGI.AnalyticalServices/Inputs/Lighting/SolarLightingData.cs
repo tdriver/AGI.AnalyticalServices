@@ -29,6 +29,8 @@ namespace AGI.AnalyticalServices.Inputs.Lighting
         /// Defaults to 0.
         /// </summary>
         public float OutputTimeOffset { get; set; }
+
+        public void Verify() => Path.Verify();
     }
 }
 

@@ -1,11 +1,11 @@
 using System;
 
-namespace AGI.AnalyticalServices.Outputs
+namespace AGI.AnalyticalServices.Outputs.Lighting
 {
     /// <summary>
-    /// Defines an azimuth/elevation pair at a specific time
+    /// Defines an azimuth/elevation pair at a specific time for solar lighting output
     /// </summary>
-    public class AzimuthElevation
+    public class SolarAngles
     {
         /// <summary>
         /// The time of the Az El
