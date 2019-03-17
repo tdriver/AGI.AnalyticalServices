@@ -16,46 +16,46 @@ namespace AGI.AnalyticalServices.Services.Lighting
     public class LightingServices
     {
         public static async Task<FlightLightingConditions> GetLightingAtASite(
-                                                                    SolarLightingData<IVerifiable> siteLightingData){
+                                                                    SolarLightingData<SiteData> siteLightingData){
             siteLightingData.Verify();
         
             var uri = Networking.GetFullUri(ServiceUris.LightingSiteUri);
-            return await Networking.HttpPostCall<SolarLightingData<IVerifiable>,
+            return await Networking.HttpPostCall<SolarLightingData<SiteData>,
                                                             FlightLightingConditions>(uri, siteLightingData);
         }        
 
         public static async Task<PathFlightLightingConditions> GetLightingAlongARoute(
-                                                                    SolarLightingData<IVerifiable> routeLightingData){
+                                                            SolarLightingData<PointToPointRouteData> routeLightingData){
             routeLightingData.Verify();
         
             var uri = Networking.GetFullUri(ServiceUris.LightingPointToPointUri);
-            return await Networking.HttpPostCall<SolarLightingData<IVerifiable>,
+            return await Networking.HttpPostCall<SolarLightingData<PointToPointRouteData>,
                                                             PathFlightLightingConditions>(uri, routeLightingData);
         }   
 
         public static async Task<List<SolarAngles>> GetSolarAnglesAtASite(
-                                                                    SolarLightingData<IVerifiable> siteSolarAnglesData){
+                                                                    SolarLightingData<SiteData> siteSolarAnglesData){
             siteSolarAnglesData.Verify();
         
             var uri = Networking.GetFullUri(ServiceUris.LightingAnglesSiteUri);
-            return await Networking.HttpPostCall<SolarLightingData<IVerifiable>,
+            return await Networking.HttpPostCall<SolarLightingData<SiteData>,
                                                             List<SolarAngles>>(uri, siteSolarAnglesData);
         }    
 
         public static async Task<List<SolarAngles>> GetSolarAnglesAlongARoute(
-                                                                    SolarLightingData<IVerifiable> routeSolarAngleData){
+                                                        SolarLightingData<PointToPointRouteData> routeSolarAngleData){
             routeSolarAngleData.Verify();
         
             var uri = Networking.GetFullUri(ServiceUris.LightingAnglesPointToPointUri);
-            return await Networking.HttpPostCall<SolarLightingData<IVerifiable>,
+            return await Networking.HttpPostCall<SolarLightingData<PointToPointRouteData>,
                                                             List<SolarAngles>>(uri, routeSolarAngleData);
         }  
 
         public static async Task<List<SolarAngles>> GetSolarTransit(
-                                                                SolarLightingData<IVerifiable> solarTransitSiteData){
+                                                                SolarLightingData<SiteData> solarTransitSiteData){
         
             var uri = Networking.GetFullUri(ServiceUris.LightingSolarTransitSiteUri);
-            return await Networking.HttpPostCall<SolarLightingData<IVerifiable>,
+            return await Networking.HttpPostCall<SolarLightingData<SiteData>,
                                                             List<SolarAngles>>(uri, solarTransitSiteData);
         }  
     }
