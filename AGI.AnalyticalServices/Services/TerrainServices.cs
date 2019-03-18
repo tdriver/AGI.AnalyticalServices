@@ -21,16 +21,17 @@ namespace AGI.AnalyticalServices.Services.Terrain
         /// <typeparam name="T">The input route data type. Only PointToPoint and GreatArc routes are allowed.
         /// or Sgp4Data.</typeparam>
         /// <returns>A Czml string.</returns>
-        public static async Task<List<TerrainHeightAtLocationResponse>> GetTerrainHeightsAlongARoute<T>(T terrainRouteData) where T: IVerifiable{
+        public static async Task<List<TerrainHeightAtLocationResponse>> 
+                                            GetTerrainHeightsAlongARoute<T>(T terrainRouteData) where T: IVerifiable{
 
             terrainRouteData.Verify();      
 
             string relativeUri = string.Empty;
             if(typeof(T) == typeof(PointToPointRouteData)){
-                relativeUri = ServiceUris.PointToPointRouteUri;
+                relativeUri = ServiceUris.TerrainHeightsPointToPointUri;
             }          
             else if(typeof(T) == typeof(GreatArcRouteData)){
-                relativeUri = ServiceUris.GreatArcRouteUri;
+                relativeUri = ServiceUris.TerrainHeightsGreatArcUri;
             }
             if(string.IsNullOrEmpty(relativeUri)){
                 throw new ArgumentOutOfRangeException("terrainRouteData",typeof(T), 
@@ -42,13 +43,12 @@ namespace AGI.AnalyticalServices.Services.Terrain
         }     
 
          public static async Task<Heights> GetTerrainHeightsAtASite(double latitude, double longitude){                                
-            
-            var uri = Networking.GetFullUri(ServiceUris.TerrainHeightsSiteUri); 
-
-            uri = new Uri(uri,$"&latitude={latitude}");
-            uri = new Uri(uri,$"&longitude={longitude}");    
+            UriBuilder ub = new UriBuilder(Networking.GetFullUri(ServiceUris.TerrainHeightsSiteUri));
+            var latQuery = $"&latitude={latitude}";
+            var longQuery = $"&longitude={longitude}";
+            ub.Query = ub.Query.Substring(1) + latQuery + longQuery;
                                        
-            return await Networking.HttpGetCall<Heights>(uri);
+            return await Networking.HttpGetCall<Heights>(ub.Uri);
         }  
     }
 }

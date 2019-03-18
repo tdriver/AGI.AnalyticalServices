@@ -13,13 +13,15 @@ namespace AGI.AnalyticalServices.Inputs.Routing
         public List<ServiceCartographicWithTime> Waypoints { get; set; }
         public OutputSettings OutputSettings { get; set; }
 
-        public Dictionary<string, string> Properties { get; }
-
-        public GreatArcRouteData()
+        public GreatArcRouteData(int numberOfPointsToAdd)
         {
             OutputSettings = new OutputSettings();
+            
             Waypoints = new List<ServiceCartographicWithTime>();
-            Properties = new Dictionary<string, string>();
+            for (int i = 0; i < numberOfPointsToAdd; i++)
+            {
+                Waypoints.Add(new ServiceCartographicWithTime());
+            }
         }
 
         public void Verify()
