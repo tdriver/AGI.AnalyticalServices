@@ -17,19 +17,23 @@ namespace AGI.AnalyticalServices.Services.Navigation
     {
         public static async Task<string> GetPsfData(DateTime? timeOfPsf = null){
             var uri = Networking.GetFullUri(ServiceUris.NavigationPsfDataUri);
-            return await Networking.HttpGetCall(Networking.AppendDateToUri(uri,timeOfPsf));
+            uri = timeOfPsf == null ? uri : Networking.AppendDateToUri(uri,timeOfPsf);
+            return await Networking.HttpGetCall(uri);
         } 
         public static async Task<string> GetPafData(DateTime? timeOfPaf = null){
             var uri = Networking.GetFullUri(ServiceUris.NavigationPafDataUri);
-            return await Networking.HttpGetCall(Networking.AppendDateToUri(uri,timeOfPaf));
+            uri = timeOfPaf == null ? uri : Networking.AppendDateToUri(uri,timeOfPaf);
+            return await Networking.HttpGetCall(uri);
         }  
         public static async Task<string> GetSofData(DateTime? timeOfSof = null){
             var uri = Networking.GetFullUri(ServiceUris.NavigationSofDataUri);
-            return await Networking.HttpGetCall(Networking.AppendDateToUri(uri,timeOfSof));
+            uri = timeOfSof == null ? uri : Networking.AppendDateToUri(uri,timeOfSof);
+            return await Networking.HttpGetCall(uri);
         } 
         public static async Task<string> GetAlmanacData(DateTime? timeOfAlmanac = null){
             var uri = Networking.GetFullUri(ServiceUris.NavigationAlmanacDataUri);
-            return await Networking.HttpGetCall(Networking.AppendDateToUri(uri,timeOfAlmanac));
+            uri = timeOfAlmanac == null ? uri : Networking.AppendDateToUri(uri,timeOfAlmanac);
+            return await Networking.HttpGetCall(uri);
         }   
 
     /// <summary>

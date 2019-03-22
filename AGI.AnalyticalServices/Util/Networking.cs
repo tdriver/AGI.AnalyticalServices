@@ -117,23 +117,29 @@ namespace AGI.AnalyticalServices.Util
         public static Uri GetFullUri(string relativeUri) => new Uri(BaseUri, relativeUri + "?u=" + ApiKey);
 
         public static Uri AppendDateToUri(Uri existingUri, DateTime? date){
-            if(date.HasValue)
-                return new Uri(existingUri,$"&date={date.Value.Date.ToString("YYYY-MM-DD")}");
+            if(date.HasValue){
+                UriBuilder urib = new UriBuilder(existingUri);
+                var dateQuery = $"&date={date.Value.Date.ToString("yyyy-MM-dd")}";
+                urib.Query = urib.Query.Substring(1) + dateQuery;
+                return urib.Uri;
+            }            
             throw new ArgumentNullException("date","The date must be supplied");
         }
         public static Uri AppendDateTimeAndPrnToUri(Uri existingUri,
                                                     DateTime? fromDate,
                                                     DateTime? toDate,
                                                     int? prn){
-            Uri result = existingUri;
+            UriBuilder urib = new UriBuilder(existingUri);
             if(fromDate.HasValue && toDate.HasValue){
-                result = new Uri(result, $"&from={fromDate.Value.ToString("YYYY-MM-DDTHH:mm:ss")}");
-                result = new Uri(result,$"&to={toDate.Value.ToString("YYYY-MM-DDTHH:mm:ss")}");
+                var fromQuery = $"&from={fromDate.Value.ToString("yyyy-MM-ddTHH:mm:ss")}";
+                var toQuery = $"&to={toDate.Value.ToString("yyyy-MM-ddTHH:mm:ss")}";
+                urib.Query = urib.Query.Substring(1) + fromQuery + toQuery;
             }
             if(prn.HasValue){
-                result = new Uri(result,$"&prn={prn.Value}");
+                var prnQuery = $"&prn={prn.Value}";
+                urib.Query = urib.Query.Substring(1) + prnQuery;
             }                            
-            return result;
+            return urib.Uri;
         }
     }
 }
