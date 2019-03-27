@@ -5,23 +5,6 @@ namespace AGI.AnalyticalServices.Outputs.Communications
 {
     public class CommunicationsExtremes
     {
-        public CommunicationsExtremes(Dictionary<LinkBudgetType, ExtremesInfo> extremes)
-        {
-            TransmitterAntennaGainInLinkDirectionExtremes = extremes[LinkBudgetType.TransmitterAntennaGainInLinkDirection];
-            ReceiverAntennaGainInLinkDirectionExtremes = extremes[LinkBudgetType.ReceiverAntennaGainInLinkDirection];
-            BitErrorRateExtremes = extremes[LinkBudgetType.BitErrorRate];
-            CarrierToInterferenceExtremes = extremes[LinkBudgetType.CarrierToInterference];
-            CarrierToNoiseExtremes = extremes[LinkBudgetType.CarrierToNoise];
-            CarrierToNoiseDensityExtremes = extremes[LinkBudgetType.CarrierToNoiseDensity];
-            CarrierToNoisePlusInterferenceExtremes = extremes[LinkBudgetType.CarrierToNoisePlusInterference];
-            EffectiveIsotropicRadiatedPowerExtremes = extremes[LinkBudgetType.EffectiveIsotropicRadiatedPower];
-            EnergyPerBitToNoiseDensityExtremes = extremes[LinkBudgetType.EnergyPerBitToNoiseDensity];
-            PowerAtReceiverOutputExtremes = extremes[LinkBudgetType.PowerAtReceiverOutput];
-            PropagationLossExtremes = extremes[LinkBudgetType.PropagationLoss];
-            ReceivedIsotropicPowerExtremes = extremes[LinkBudgetType.ReceivedIsotropicPower];
-            ReceivedPowerFluxDensityExtremes = extremes[LinkBudgetType.ReceivedPowerFluxDensity];
-        }
-
         public ExtremesInfo TransmitterAntennaGainInLinkDirectionExtremes { get; set; }
         public ExtremesInfo ReceiverAntennaGainInLinkDirectionExtremes { get; set; }
         public ExtremesInfo BitErrorRateExtremes { get; set; }

@@ -36,7 +36,7 @@ namespace AGI.AnalyticalServices.Util
         /// <returns>Result from the Web service, as R.</returns>
         public static async Task<R> HttpPostCall<T, R>(Uri address, T postData){
 
-            var postDataS = JsonConvert.SerializeObject(postData);
+            var postDataS = JsonConvert.SerializeObject(postData, new Newtonsoft.Json.Converters.StringEnumConverter());
             HttpContent postContent = new StringContent(postDataS,Encoding.UTF8,"application/json");
 
             var response = await _client.PostAsync(address, postContent);

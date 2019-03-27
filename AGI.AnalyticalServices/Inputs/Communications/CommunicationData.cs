@@ -67,7 +67,8 @@ namespace AGI.AnalyticalServices.Inputs.Communications
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, 
+                    new Newtonsoft.Json.Converters.StringEnumConverter());
         }
     }
 }
