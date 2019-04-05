@@ -77,12 +77,10 @@ namespace AGI.AnalyticalServices.Inputs.Navigation
 
         public virtual void Verify()
         {
-            if(Path != null)
-                Path.Verify();
-            else
-            {
+            if(Path == null)
                 throw new AnalyticalServicesException(22200, "Path must not be null.");
-            }
+            
+            Path.Verify();
 
             if (Path is ISiteInput)
             {

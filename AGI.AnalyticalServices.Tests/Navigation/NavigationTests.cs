@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
 using AGI.AnalyticalServices.Inputs;
+using AGI.AnalyticalServices.Inputs.Navigation;
 using AGI.AnalyticalServices.Inputs.Routing;
 using AGI.AnalyticalServices.Outputs.Navigation;
 using AGI.AnalyticalServices.Services.Navigation;
@@ -70,5 +71,27 @@ namespace AGI.AnalyticalServices.Tests.Navigation
                 new DateTime(2019,01,01),new DateTime(2019,03,22)).Result;
             Assert.That(!string.IsNullOrEmpty(outages));
         }
+
+        [Test]
+        public void TestPredictedErrorsOnSimpleFlightRoute()
+        {
+            var input = new NavigationPredictionData<IVerifiable> ();
+            var path = new SimpleFlightRouteData();
+            path.Start = new DateTimeOffset(2014,5,3,0,0,0,0,new TimeSpan(0));
+            path.Waypoints.Add(new ServiceCartographic2D(39.0,-104.77));
+            path.Waypoints.Add(new ServiceCartographic2D(30.0,-98.0));
+            path.Waypoints.Add(new ServiceCartographic2D(40.0,-77.0));
+            path.TurningRadius = 1000.0;
+            path.Speed = 111.76;
+            path.Altitude = 9144.0;
+            path.MeanSeaLevel = true;
+            input.Path = path;
+            var result = NavigationServices.GetPredictedNavigationErrorsOnARoute(input).Result;
+            Assert.That(result.Errors.Length > 0);
+        }
     }
+
+    // public static class NavHelper{
+    //     NavigationPredictedData<T> GetNavInput<T>()
+    // }
 }

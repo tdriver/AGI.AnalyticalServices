@@ -18,7 +18,7 @@ namespace AGI.AnalyticalServices.Inputs.Routing
         /// <summary>
         /// The set of waypoints the route will follow
         /// </summary>
-        public List<ServiceCartographic> Waypoints { get; set; }
+        public List<ServiceCartographic2D> Waypoints { get; set; }
         /// <summary>
         /// The radius of the turn around a waypoint, in meters.
         /// </summary>
@@ -44,11 +44,11 @@ namespace AGI.AnalyticalServices.Inputs.Routing
         public SimpleFlightRouteData()
         {
             TurningRadius = 200;
-            Speed = 65;
+            Speed = 65;        
             Altitude = 1000;
             MeanSeaLevel = true;
             OutputSettings = new OutputSettings();
-            Waypoints = new List<ServiceCartographic>();
+            Waypoints = new List<ServiceCartographic2D>();
         }
 
         public void Verify()

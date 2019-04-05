@@ -66,20 +66,20 @@ namespace AGI.AnalyticalServices.Services.Navigation
             string relativeUri = string.Empty;
             
             predictionDataForRoute.Verify();
-            
-            if((Type)predictionDataForRoute.Path == typeof(PointToPointRouteData)){
+
+            if(predictionDataForRoute.Path.GetType() == typeof(PointToPointRouteData)){
                 relativeUri = ServiceUris.NavigationPredictedPointToPointUri;
             }
-            else if((Type)predictionDataForRoute.Path == typeof(SimpleFlightRouteData)){
+            else if(predictionDataForRoute.Path.GetType() == typeof(SimpleFlightRouteData)){
                 relativeUri = ServiceUris.NavigationPredictedSimpleFlightUri;
             }
-            else if((Type)predictionDataForRoute.Path == typeof(TolRouteData)){
+            else if(predictionDataForRoute.Path.GetType() == typeof(TolRouteData)){
                 relativeUri = ServiceUris.NavigationPredictedTolUri;
             }
-            else if((Type)predictionDataForRoute.Path == typeof(RasterRouteData)){
+            else if(predictionDataForRoute.Path.GetType() == typeof(RasterRouteData)){
                 relativeUri = ServiceUris.NavigationPredictedRasterUri;
             }
-            else if((Type)predictionDataForRoute.Path == typeof(GreatArcRouteData)){
+            else if(predictionDataForRoute.Path.GetType() == typeof(GreatArcRouteData)){
                 relativeUri = ServiceUris.NavigationPredictedGreatArcUri;
             }
 
