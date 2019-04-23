@@ -21,12 +21,12 @@ namespace AGI.AnalyticalServices.Services.Weather
             return await Networking.HttpPostCall<WeatherData<SiteData>,List<WeatherResult>>(uri, siteWeatherData);
         }  
 
-        public static async Task<List<WeatherResult>> GetWeatherAlongARoute(
-                                                                    WeatherData<IVerifiable> routeWeatherData){
+        public static async Task<List<WeatherResultWithLocation>> GetWeatherAlongARoute(
+                                                                WeatherData<PointToPointRouteData> routeWeatherData){
             routeWeatherData.Verify();
             var uri = Networking.GetFullUri(ServiceUris.WeatherPointToPointUri);
-            return await Networking.HttpPostCall<WeatherData<IVerifiable>,
-                                                                        List<WeatherResult>>(uri, routeWeatherData);
+            return await Networking.HttpPostCall<WeatherData<PointToPointRouteData>,
+                                                                List<WeatherResultWithLocation>>(uri, routeWeatherData);
         }  
     }
 }
