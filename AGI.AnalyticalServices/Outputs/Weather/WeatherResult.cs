@@ -14,15 +14,15 @@ namespace AGI.AnalyticalServices.Outputs.Weather
         public float DewPoint { get; set; }        
         public float RelativeHumidity { get; set; }        
         public string Icon { get; set; }        
-        public int PrecipitationRate { get; set; }       
+        public float PrecipitationRate { get; set; }       
         public string PrecipitationType { get; set; }        
-        public int PrecipitationProbability { get; set; }        
+        public float PrecipitationProbability { get; set; }        
         public float Temperature { get; set; }
         public string TextSummary { get; set; }
-        public int Visibility { get; set; }
+        public float Visibility { get; set; }
         public float WindGust { get; set; }
         public float WindSpeed { get; set; }
-        public int WindDirection { get; set; }
+        public float WindDirection { get; set; }
         public string Notes { get; set; }
 
         public override string ToString()

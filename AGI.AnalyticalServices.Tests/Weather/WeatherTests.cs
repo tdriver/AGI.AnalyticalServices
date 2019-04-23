@@ -7,13 +7,13 @@ using AGI.AnalyticalServices.Services.Weather;
 using NUnit.Framework;
 using AGI.AnalyticalServices.Util;
 
-namespace AGI.AnalyticalServices.Tests.Lighting
+namespace AGI.AnalyticalServices.Tests.Weather
 {
     [TestFixture]
     public class WeatherTests
     {
         [Test]
-        public void TestSolarLighting()
+        public void TestWeatherAtASite()
         {
             var request = new WeatherData<SiteData>();
             request.Path = new SiteData();

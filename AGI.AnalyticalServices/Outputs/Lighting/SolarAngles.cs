@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace AGI.AnalyticalServices.Outputs.Lighting
 {
@@ -19,5 +20,10 @@ namespace AGI.AnalyticalServices.Outputs.Lighting
         /// The elevation angle in degrees, measured positive away from the central body, from the local horizontal plane
         /// </summary>
         public double Elevation { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

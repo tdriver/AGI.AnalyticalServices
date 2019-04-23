@@ -33,5 +33,20 @@ namespace AGI.AnalyticalServices.Tests.Lighting
             Assert.That(lightingResult.Lighting[0].Sunset.Second == 49);
 
         }
+
+        [Test]
+        public void TestSolarAngles()
+        {
+            var request = new SolarLightingData<SiteData>();
+            request.Path = new SiteData();
+            request.Path.Location.Latitude = 39.0;
+            request.Path.Location.Longitude = -104.77;
+            request.Path.Location.Altitude = 1910;
+            request.AnalysisStart = new DateTime(2018,5,5);
+            request.AnalysisStop = new DateTime(2018,5,5);
+            request.OutputTimeOffset = -6.0f;
+            var lightingResult = LightingServices.GetSolarAnglesAtASite(request).Result;
+            Assert.That(lightingResult != null);
+        }
     }
 }
