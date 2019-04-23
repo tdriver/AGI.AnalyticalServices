@@ -90,8 +90,4 @@ namespace AGI.AnalyticalServices.Tests.Navigation
             Assert.That(result.Errors.Length > 0);
         }
     }
-
-    // public static class NavHelper{
-    //     NavigationPredictedData<T> GetNavInput<T>()
-    // }
 }

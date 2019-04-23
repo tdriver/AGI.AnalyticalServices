@@ -74,5 +74,9 @@ namespace AGI.AnalyticalServices.Util{
 // Population Services
         public const string PopulationPointToPointUri = "/V1/population/pointToPoint";
         public const string PopulationSiteUri = "/V1/population/site";
+// Weather Services
+        public const string WeatherPointToPointUri = "/V1/weather/pointToPoint";
+        public const string WeatherSiteUri = "/V1/weather/site";
+
     }
 }
