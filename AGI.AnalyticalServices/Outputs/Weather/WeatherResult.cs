@@ -40,7 +40,7 @@ namespace AGI.AnalyticalServices.Outputs.Weather
         /// </summary>
         public float PrecipitationRate { get; set; }       
         /// <summary>
-        /// The type of precipitation. Will be either "Rain", "Snow" or "Sleet"
+        /// The type of precipitation. Will be either "Rain", "Snow" or "Sleet" or null
         /// </summary>
         public string PrecipitationType { get; set; }        
         /// <summary>
