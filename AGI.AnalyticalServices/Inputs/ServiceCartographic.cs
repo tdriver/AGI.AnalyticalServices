@@ -1,4 +1,5 @@
 ﻿using AGI.AnalyticalServices.Exceptions;
+using Newtonsoft.Json;
 
 namespace AGI.AnalyticalServices.Inputs
 {
@@ -45,5 +46,10 @@ namespace AGI.AnalyticalServices.Inputs
                 throw new AnalyticalServicesException(23600, "Longitude must be between -360 deg and 360 deg.");
             }
         }
+
+        public override string ToString(){
+            return JsonConvert.SerializeObject(this);
+        }
+        
     }
 }
