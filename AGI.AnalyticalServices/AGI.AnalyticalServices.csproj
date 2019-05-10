@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Ted Driver</Authors>
+    <Company>Analytical Graphics Inc.</Company>
+    <Product>AGI.AnalyticalServices .NET SDK</Product>
+    <Description>A software development kit that allows .NET usage of the AGI analytical services</Description>
+    <Copyright>2019 - AGI</Copyright>
+    <RepositoryUrl>https://github.com/tdriver/AGI.AnalyticalServices</RepositoryUrl>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageTags>STK; STK Components; Analytical Services; .NET; SDK; Analysis</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
