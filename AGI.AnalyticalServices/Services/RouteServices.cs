@@ -13,6 +13,7 @@ namespace AGI.AnalyticalServices.Services.Routing
     /// </summary>
     public class RouteServices
     {
+        /// <summary>
         /// Gets a propagated route.
         /// </summary>
         /// <param name="routeData">The data defining the route.</param>
