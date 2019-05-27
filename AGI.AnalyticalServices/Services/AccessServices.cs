@@ -19,28 +19,28 @@ namespace AGI.AnalyticalServices.Services.Access
             
             accessData.Verify();
             
-            if((Type)accessData.FromObjectPath == typeof(PointToPointRouteData)){
+            if(accessData.FromObjectPath as PointToPointRouteData != null){
                 relativeUri = ServiceUris.AccessSatellitePassesPointToPointUri;
             }
-            else if((Type)accessData.FromObjectPath == typeof(SiteData)){
+            else if(accessData.FromObjectPath as SiteData != null){
                 relativeUri = ServiceUris.AccessSatellitePassesSiteUri;
             }
-            else if((Type)accessData.FromObjectPath == typeof(Sgp4RouteData)){
+            else if(accessData.FromObjectPath as Sgp4RouteData != null){
                 relativeUri = ServiceUris.AccessSatellitePassesSgp4Uri;
             }
-            else if((Type)accessData.FromObjectPath == typeof(SimpleFlightRouteData)){
+            else if(accessData.FromObjectPath as SimpleFlightRouteData != null){
                 relativeUri = ServiceUris.AccessSatellitePassesSimpleFlightUri;
             }
-            else if((Type)accessData.FromObjectPath == typeof(TolRouteData)){
+            else if(accessData.FromObjectPath as TolRouteData != null){
                 relativeUri = ServiceUris.AccessSatellitePassesTolUri;
             }
-            else if((Type)accessData.FromObjectPath == typeof(RasterRouteData)){
+            else if(accessData.FromObjectPath as RasterRouteData != null){
                 relativeUri = ServiceUris.AccessSatellitePassesRasterUri;
             }
-            else if((Type)accessData.FromObjectPath == typeof(GreatArcRouteData)){
+            else if( accessData.FromObjectPath as GreatArcRouteData != null){
                 relativeUri = ServiceUris.AccessSatellitePassesGreatArcUri;
             }
-            else if((Type)accessData.FromObjectPath == typeof(CatalogRouteData)){
+            else if(accessData.FromObjectPath as CatalogRouteData != null){
                 relativeUri = ServiceUris.AccessSatellitePassesCatalogObjectUri;
             }
             
