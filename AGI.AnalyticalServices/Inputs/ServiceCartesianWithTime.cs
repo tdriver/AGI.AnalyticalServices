@@ -5,11 +5,11 @@ using Newtonsoft.Json;
 
 namespace AGI.AnalyticalServices.Inputs
 {
-    public class ServiceCartesianWithTime
+    public class ServiceCartesianWithTime : IPathResult
     {
-        public ServiceCartesian Position {get; set;}
+        public ServiceCartesian Position { get; set; }
         public List<SensorState> SensorStates { get; set; }
-        public DateTimeOffset Time { get; set; }       
+        public DateTimeOffset Time { get; set; }
 
         public ServiceCartesianWithTime()
         {
@@ -34,7 +34,7 @@ namespace AGI.AnalyticalServices.Inputs
             else
             {
                 SensorStates = sensors;
-            }     
+            }
             Time = time;
         }
 
@@ -45,7 +45,7 @@ namespace AGI.AnalyticalServices.Inputs
             Time = time;
         }
 
-        public ServiceCartesianWithTime(double posX, double posY, double posZ, List<SensorState> sensors, 
+        public ServiceCartesianWithTime(double posX, double posY, double posZ, List<SensorState> sensors,
         DateTimeOffset time)
         {
             Position = new ServiceCartesian(posX, posY, posZ);
@@ -56,7 +56,7 @@ namespace AGI.AnalyticalServices.Inputs
             else
             {
                 SensorStates = sensors;
-            }     
+            }
             Time = time;
         }
 

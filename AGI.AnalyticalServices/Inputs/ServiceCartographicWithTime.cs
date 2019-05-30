@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace AGI.AnalyticalServices.Inputs
 {
-    public class ServiceCartographicWithTime : IVerifiable
+    public class ServiceCartographicWithTime : IVerifiable, IPathResult
     {
         public ServiceCartographic Position { get; set; }
         public List<SensorState> SensorStates { get; set; }
@@ -17,7 +17,7 @@ namespace AGI.AnalyticalServices.Inputs
             Time = time;
         }
 
-        public ServiceCartographicWithTime(double latitude, double longitude, double altitude, 
+        public ServiceCartographicWithTime(double latitude, double longitude, double altitude,
                                            List<SensorState> sensors, DateTimeOffset time)
         {
             Position = new ServiceCartographic(latitude, longitude, altitude);
@@ -49,7 +49,7 @@ namespace AGI.AnalyticalServices.Inputs
             else
             {
                 SensorStates = sensors;
-            }     
+            }
             Time = time;
         }
 
