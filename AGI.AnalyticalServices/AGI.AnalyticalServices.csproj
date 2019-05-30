@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.1.1</Version>
+    <releaseNotes>Bug fixes</releaseNotes>
+    <license>GPL-3.0-only</license>
     <Authors>Ted Driver</Authors>
     <Company>Analytical Graphics Inc.</Company>
     <Product>AGI.AnalyticalServices .NET SDK</Product>
