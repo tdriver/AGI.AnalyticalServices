@@ -1,7 +1,8 @@
 # AGI Analytical Services C# Software Development Kit
-Analytical Graphics Inc. (AGI) hosts a set of micro services for performing complex analyses.  
+Analytical Graphics Inc. (AGI) hosts a set of web services for performing complex analyses.  
 The services are located here: https://saas.agi.com/V1.
 This project provides a C# SDK for interacting with the services.
+*Note that the software hosted in this repository provides no functionality in and of itself.  It simply provides a development kit that makes using AGI's Analytical Services easier.  To use the Analytical Services (with or without this development kit), you will need an API key.  That key can be obtained by visiting the services site above, and following the instructions there.*
 
 ## How to use this SDK
 To use this SDK with AGIs Analytical Services, follow these steps.
