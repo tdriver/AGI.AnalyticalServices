@@ -28,7 +28,7 @@ namespace AGI.AnalyticalServices.Tests.Lighting
             // Transmitter
             var td = new TransmitterData();
             var sd = new SiteData();
-            sd.Location = new ServiceCartographic(42.0,-105.0,2000.0);
+            sd.Location = new ServiceCartographic(42.0, -105.0, 2000.0);
             sd.MeanSeaLevel = true;
             td.Path = sd;
             td.PathRouteType = RouteTypes.FixedSite;
@@ -39,7 +39,7 @@ namespace AGI.AnalyticalServices.Tests.Lighting
             // Interference Sources
             var jammer1 = new TransmitterData();
             var jammer1Path = new SiteData();
-            jammer1Path.Location = new ServiceCartographic(42.001,-105.0,1900);
+            jammer1Path.Location = new ServiceCartographic(42.001, -105.0, 1900);
             jammer1Path.MeanSeaLevel = true;
             jammer1.Path = jammer1Path;
             jammer1.PathRouteType = RouteTypes.FixedSite;
@@ -49,7 +49,7 @@ namespace AGI.AnalyticalServices.Tests.Lighting
 
             var jammer2 = new TransmitterData();
             var jammer2Path = new SiteData();
-            jammer2Path.Location = new ServiceCartographic(41.997,-105.0,1900);
+            jammer2Path.Location = new ServiceCartographic(41.997, -105.0, 1900);
             jammer2Path.MeanSeaLevel = true;
             jammer2.Path = jammer1Path;
             jammer2.PathRouteType = RouteTypes.FixedSite;
@@ -63,10 +63,10 @@ namespace AGI.AnalyticalServices.Tests.Lighting
             // Receiver
             var receiver = new ReceiverData();
             var receiverPath = new GreatArcRouteData(2);
-            receiverPath.Waypoints[0].Position = new ServiceCartographic(41,-105.0,2000.0);
-            receiverPath.Waypoints[0].Time = new DateTimeOffset(2016,02,23,4,44,0,new TimeSpan(0));
-            receiverPath.Waypoints[1].Position = new ServiceCartographic(43,-104.0,2000.0);
-            receiverPath.Waypoints[1].Time = new DateTimeOffset(2016,02,23,5,44,0,new TimeSpan(0));
+            receiverPath.Waypoints[0].Position = new ServiceCartographic(41, -105.0, 2000.0);
+            receiverPath.Waypoints[0].Time = new DateTimeOffset(2016, 02, 23, 4, 44, 0, new TimeSpan(0));
+            receiverPath.Waypoints[1].Position = new ServiceCartographic(43, -104.0, 2000.0);
+            receiverPath.Waypoints[1].Time = new DateTimeOffset(2016, 02, 23, 5, 44, 0, new TimeSpan(0));
             receiverPath.OutputSettings.Step = 900;
             receiverPath.OutputSettings.TimeFormat = TimeRepresentation.UTC;
             receiverPath.OutputSettings.CoordinateFormat.Coord = CoordinateRepresentation.LLA;
@@ -91,7 +91,7 @@ namespace AGI.AnalyticalServices.Tests.Lighting
             Assert.That(commResult != null);
             Assert.That(commResult.LinkBudgets != null);
             Assert.That(commResult.LinkBudgets.Count == 5);
-            Assert.That(commResult.LinkBudgets[0].BitErrorRate == 0.49983698459707543);        
+            Assert.AreEqual(0.499, commResult.LinkBudgets[0].BitErrorRate, 1e-3);
         }
     }
 }
