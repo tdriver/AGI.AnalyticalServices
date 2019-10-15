@@ -60,7 +60,7 @@ namespace AGI.AnalyticalServices.Tests.Navigation
          [Test]
         public void TestAlmanacWithDate()
         {
-            var alm = NavigationServices.GetAlmanacData(new DateTime(2019,01,04)).Result;
+            var alm = NavigationServices.GetAlmanacData(new DateTime(2019,02,04)).Result;
             Assert.That(!string.IsNullOrEmpty(alm));
         }
 

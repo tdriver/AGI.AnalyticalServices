@@ -10,7 +10,7 @@ using NUnit.Framework;
 using AGI.AnalyticalServices.Util;
 using System.IO;
 
-namespace AGI.AnalyticalServices.Tests.Lighting
+namespace AGI.AnalyticalServices.Tests.Communications
 {
     [TestFixture]
     public class CommunicationsTests
