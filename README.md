@@ -1,5 +1,7 @@
 # AGI Analytical Services C# Software Development Kit
 
+NOTE: This repo is no longer maintained by me.  See the repo at https://github.com/OneSkySystems/AnalyticalServices.SDK for a more updated version.
+
 Analytical Graphics Inc. (AGI) hosts a set of web services for performing complex analyses.  
 The services are located here: <https://saas.agi.com/V1.>
 This project provides a C# SDK for interacting with the services.
